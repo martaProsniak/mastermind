@@ -1,0 +1,3 @@
+.game-wrapper {
+  height: calc(100dvh - 88px - 56px);
+}
