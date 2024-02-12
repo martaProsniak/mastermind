@@ -1,14 +1,15 @@
+import { EventEmitter } from '@angular/core';
 import { ColorModel } from './color.model';
 import { GameModel } from './game.model';
 
 const colorClasses = [
-  'bg-pink-500',
+  'bg-pink-400',
   'bg-blue-600',
   'bg-yellow-400',
   'bg-lime-400',
   'bg-orange-600',
   'bg-green-600',
-  'bg-violet-700',
+  'bg-violet-600',
   'bg-cyan-400',
 ];
 
@@ -21,6 +22,8 @@ export class GameService {
     };
   });
   private codeLength: 4 | 5 = 4;
+  selectedColor: ColorModel;
+  onSelectedColorChange = new EventEmitter<ColorModel>();
 
   getAvailableColors() {
     return this.availableColors.slice();
@@ -44,7 +47,13 @@ export class GameService {
 
   startNewGame() {
     this.game = new GameModel(this.generateCode());
-    console.log(this.game.code);
+    this.selectedColor = this.availableColors[0];
+    this.onSelectedColorChange.emit(this.selectedColor);
+  }
+
+  changeSelectedColor(color: ColorModel) {
+    this.selectedColor = color;
+    this.onSelectedColorChange.emit(this.selectedColor);
   }
 
   finishGame() {
