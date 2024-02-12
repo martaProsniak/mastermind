@@ -12,6 +12,7 @@ import { HintComponent } from './game/hint/hint.component';
 import { ColorCodeComponent } from './game/color-code/color-code.component';
 import { FooterComponent } from './footer/footer.component';
 import { AvailableColorsComponent } from './game/available-colors/available-colors.component';
+import { GameService } from './game/game.service';
 
 
 @NgModule({
@@ -23,7 +24,7 @@ import { AvailableColorsComponent } from './game/available-colors/available-colo
   imports: [
     BrowserModule
   ],
-  providers: [],
+  providers: [GameService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
