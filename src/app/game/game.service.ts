@@ -2,21 +2,21 @@ import { ColorModel } from './color.model';
 import { GameModel } from './game.model';
 
 const colorClasses = [
-  'pink-500',
-  'blue-600',
-  'yellow-400',
-  'lime-400',
-  'orange-600',
-  'green-600',
-  'violet-700',
-  'cyan-400',
+  'bg-pink-500',
+  'bg-blue-600',
+  'bg-yellow-400',
+  'bg-lime-400',
+  'bg-orange-600',
+  'bg-green-600',
+  'bg-violet-700',
+  'bg-cyan-400',
 ];
 
 export class GameService {
   private game: GameModel;
   private availableColors: ColorModel[] = colorClasses.map((color) => {
     return {
-      id: color.split('-')[0],
+      id: color.split('-')[1],
       colorClass: color,
     };
   });
@@ -45,5 +45,9 @@ export class GameService {
   startNewGame() {
     this.game = new GameModel(this.generateCode());
     console.log(this.game.code);
+  }
+
+  finishGame() {
+    this.game.gameInProgress = false;
   }
 }

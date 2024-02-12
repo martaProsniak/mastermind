@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { ColorModel } from '../color.model';
 
 @Component({
   selector: 'colors-row',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrl: './colors-row.component.css'
 })
 export class ColorsRowComponent {
-
+  @Input() colors: ColorModel[];
 }
