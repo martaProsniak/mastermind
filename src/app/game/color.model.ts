@@ -1,9 +1,9 @@
 export class ColorModel {
   id: string;
-  colorClass: string;
+  color: string;
 
   constructor(id: string, colorClass: string) {
     this.id = id;
-    this.colorClass = colorClass;
+    this.color = colorClass;
   }
 }

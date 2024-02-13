@@ -1,3 +1,4 @@
-<div class="w-[280px]">
-  <colors-row [colors]="code"></colors-row>
+<div class="flex gap-3">
+    <color-dot *ngFor="let color of code" [color]="showCode ? color : {id: 'default', color: '#64748b'}" class="col-span-1"></color-dot>
 </div>
+

@@ -14,18 +14,14 @@ import { ColorModel } from '../color.model';
 export class ColorDotComponent implements OnInit, OnChanges {
   @Input() color: ColorModel;
   @Input() isSelected: boolean;
-  @Input() onColorClick: (color: ColorModel) => {};
+  @Input() onColorClick: (color: ColorModel) => void;
   animateClass: string;
-  defaultColorClass: string = 'bg-inherit';
-  colorClass = this.defaultColorClass;
 
   ngOnInit(): void {
-    this.colorClass = this.color.colorClass;
     this.animateClass = this.isSelected ? 'animate-pulse' : '';
   }
 
   ngOnChanges(): void {
-    this.colorClass = this.color.colorClass;
     this.animateClass = this.isSelected ? 'animate-pulse' : '';
   }
 

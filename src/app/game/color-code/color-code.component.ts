@@ -9,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ColorCodeComponent implements OnInit {
   code: ColorModel[] = [];
-  showCode = true;
+  showCode = false;
 
   constructor(private gameService: GameService) {}
 

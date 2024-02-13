@@ -2,25 +2,20 @@ import { EventEmitter } from '@angular/core';
 import { ColorModel } from './color.model';
 import { GameModel } from './game.model';
 
-const colorClasses = [
-  'bg-pink-400',
-  'bg-blue-600',
-  'bg-yellow-400',
-  'bg-lime-400',
-  'bg-orange-600',
-  'bg-green-600',
-  'bg-violet-600',
-  'bg-cyan-400',
-];
+const colors: ColorModel[] = [
+  new ColorModel('pink', 'hotpink'),
+  new ColorModel('blue', 'dodgerblue'),
+  new ColorModel('green', 'lightgreen'),
+  new ColorModel('red', 'lightcoral'),
+  new ColorModel('purple', 'rebeccapurple'),
+  new ColorModel('yellow', 'gold'),
+  new ColorModel('cream', 'linen'),
+  new ColorModel('sea', 'lightseagreen')
+]
 
 export class GameService {
   private game: GameModel;
-  private availableColors: ColorModel[] = colorClasses.map((color) => {
-    return {
-      id: color.split('-')[1],
-      colorClass: color,
-    };
-  });
+  private availableColors: ColorModel[] = colors;
   private codeLength: 4 | 5 = 4;
   selectedColor: ColorModel;
   onSelectedColorChange = new EventEmitter<ColorModel>();

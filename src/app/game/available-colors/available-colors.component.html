@@ -1,5 +1,6 @@
-
-  <div class="grid grid-flow-row grid-cols-4 grid-row-2 gap-4 w-[240px]">
-    <color-dot *ngFor="let color of colors" [color]="color" class="col-span-1" [isSelected]="selectedColor === color" [onColorClick]="onColorClick"></color-dot>
-  </div>
+<div class="flex gap-3 flex-wrap">
+    <color-dot *ngFor="let color of colors" [color]="color"
+               [isSelected]="selectedColor === color"
+               [onColorClick]="onColorClick"></color-dot>
+</div>
 
