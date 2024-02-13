@@ -1,5 +1,5 @@
 import { ColorModel } from '../color.model';
-import { GameService } from './../game.service';
+import { GameService } from '../game.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -9,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ColorCodeComponent implements OnInit {
   code: ColorModel[] = [];
-  showCode = false;
+  showCode = true;
 
   constructor(private gameService: GameService) {}
 
