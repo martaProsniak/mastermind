@@ -15,10 +15,16 @@ export class ColorDotComponent implements OnInit, OnChanges {
   @Input() color: ColorModel;
   @Input() isSelected: boolean;
   @Input() onColorClick: (color: ColorModel) => void;
+  @Input() isSmall: boolean = false;
+  @Input() showPointer: boolean = true;
   animateClass: string;
+  sizeClasses: string = 'h-10 w-10';
 
   ngOnInit(): void {
     this.animateClass = this.isSelected ? 'animate-pulse' : '';
+    if (this.isSmall) {
+      this.sizeClasses = 'h-5 w-5'
+    }
   }
 
   ngOnChanges(): void {

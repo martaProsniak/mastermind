@@ -1,5 +1,5 @@
 <div
-  class="rounded-full cursor-pointer h-10 w-10 {{animateClass}}"
+  class="rounded-full {{sizeClasses}} {{animateClass}}"
   (click)="handleColorClick(color)"
-  [ngStyle]="{'background-color': color.color}">
+  [ngStyle]="{'background-color': color.color, 'cursor': showPointer ? 'pointer' : ''}">
 </div>

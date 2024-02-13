@@ -10,8 +10,8 @@ const colors: ColorModel[] = [
   new ColorModel('purple', 'rebeccapurple'),
   new ColorModel('yellow', 'gold'),
   new ColorModel('cream', 'linen'),
-  new ColorModel('sea', 'lightseagreen')
-]
+  new ColorModel('sea', 'lightseagreen'),
+];
 
 export class GameService {
   private game: GameModel;
@@ -44,6 +44,7 @@ export class GameService {
     this.game = new GameModel(this.generateCode());
     this.selectedColor = this.availableColors[0];
     this.onSelectedColorChange.emit(this.selectedColor);
+    console.log(this.game);
   }
 
   changeSelectedColor(color: ColorModel) {
@@ -53,5 +54,17 @@ export class GameService {
 
   finishGame() {
     this.game.gameInProgress = false;
+  }
+
+  getGame() {
+    return structuredClone(this.game);
+  }
+
+  getHints() {
+    return this.game.hints.slice();
+  }
+
+  getGuesses() {
+    return this.game.guesses.slice();
   }
 }
