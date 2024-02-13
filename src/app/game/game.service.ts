@@ -19,6 +19,7 @@ export class GameService {
   private codeLength: 4 | 5 = 4;
   selectedColor: ColorModel;
   onSelectedColorChange = new EventEmitter<ColorModel>();
+  onNewGameStart = new EventEmitter<GameModel>();
 
   getAvailableColors() {
     return this.availableColors;
@@ -59,7 +60,8 @@ export class GameService {
   startNewGame() {
     this.game = new GameModel(this.generateCode());
     this.selectedColor = this.availableColors[0];
-    this.onSelectedColorChange.emit(this.selectedColor);
+    // this.onSelectedColorChange.emit(this.selectedColor);
+    this.onNewGameStart.emit(this.game);
     console.log(this.game);
   }
 
@@ -70,6 +72,7 @@ export class GameService {
 
   finishGame() {
     this.game.gameInProgress = false;
+    this.startNewGame();
   }
 
   getActiveRow() {
@@ -78,5 +81,20 @@ export class GameService {
 
   onColorGuess(index: number) {
     this.getActiveRow()[index] = this.selectedColor;
+  }
+
+  onCheck() {
+    console.log(this.getCode());
+    console.log(this.getActiveRow());
+    console.log(this.getCode() === this.getActiveRow());
+    const activeRow = this.getActiveRow();
+    const results = this.getCode().map((color, index) => {
+      return color.id === activeRow[index].id;
+    });
+    console.log(results);
+    if (!results.includes(false)) {
+      console.log('Win');
+      this.finishGame();
+    }
   }
 }
