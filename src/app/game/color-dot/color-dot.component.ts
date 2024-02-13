@@ -14,7 +14,7 @@ import { ColorModel } from '../color.model';
 export class ColorDotComponent implements OnInit, OnChanges {
   @Input() color: ColorModel;
   @Input() isSelected: boolean;
-  @Input() onColorClick: (color: ColorModel) => void;
+  @Input() onColorClick: ((color: ColorModel) => void);
   @Input() isSmall: boolean = false;
   @Input() showPointer: boolean = true;
   animateClass: string;
@@ -31,9 +31,4 @@ export class ColorDotComponent implements OnInit, OnChanges {
     this.animateClass = this.isSelected ? 'animate-pulse' : '';
   }
 
-  handleColorClick(color: ColorModel) {
-    if (this.onColorClick) {
-      this.onColorClick(color);
-    }
-  }
 }

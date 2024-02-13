@@ -14,6 +14,7 @@ export class BoardComponent implements OnInit {
   rows: number[];
   hints: Array<Array<ColorModel>> = [];
   guesses: Array<Array<ColorModel>> = [];
+  currentTurn: number = 0;
 
   constructor(private gameService: GameService) {}
 
@@ -22,7 +23,11 @@ export class BoardComponent implements OnInit {
     this.rows = Array.from(Array(this.rowsCount).keys());
     this.hints = this.gameService.getHints();
     this.guesses = this.gameService.getGuesses();
+    this.currentTurn = this.gameService.getCurrentTurn();
+  }
 
+  onColorGuess = (index: number) => {
+    this.gameService.onColorGuess(index);
   }
 
 }

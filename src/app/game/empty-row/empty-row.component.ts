@@ -8,4 +8,15 @@ import { ColorModel } from '../color.model';
 })
 export class EmptyRowComponent {
   @Input() colors: ColorModel[];
+  @Input() onClick: (index: number) => void;
+  @Input() currentTurn: number = 0;
+
+
+  handleClick(index: number) {
+    console.log(index);
+
+    if (this.onClick) {
+      this.onClick(index);
+    }
+  }
 }

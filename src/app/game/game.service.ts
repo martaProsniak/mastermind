@@ -21,11 +21,27 @@ export class GameService {
   onSelectedColorChange = new EventEmitter<ColorModel>();
 
   getAvailableColors() {
-    return this.availableColors.slice();
+    return this.availableColors;
   }
 
   getCode() {
-    return this.game.code.slice();
+    return this.game.code;
+  }
+
+  getGame() {
+    return this.game;
+  }
+
+  getHints() {
+    return this.game.hints;
+  }
+
+  getGuesses() {
+    return this.game.guesses;
+  }
+
+  getCurrentTurn() {
+    return this.game.currentTurn;
   }
 
   getRandomIndex(max: number = 8) {
@@ -56,15 +72,11 @@ export class GameService {
     this.game.gameInProgress = false;
   }
 
-  getGame() {
-    return structuredClone(this.game);
+  getActiveRow() {
+    return this.game.guesses[this.game.maxTurn - 1];
   }
 
-  getHints() {
-    return this.game.hints.slice();
-  }
-
-  getGuesses() {
-    return this.game.guesses.slice();
+  onColorGuess(index: number) {
+    this.getActiveRow()[index] = this.selectedColor;
   }
 }

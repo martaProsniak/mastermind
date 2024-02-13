@@ -1,6 +1,6 @@
 <div class="flex gap-3 flex-wrap mb-6">
     <color-dot *ngFor="let color of colors" [color]="color"
                [isSelected]="selectedColor === color"
-               [onColorClick]="onColorClick"></color-dot>
+               (click)="onColorClick(color)"></color-dot>
 </div>
 
