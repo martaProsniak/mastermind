@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit } from '@angular/core';
 import { GameService } from '../game.service';
 import { GameModel } from '../game.model';
 import { ColorModel } from '../color.model';
@@ -14,21 +14,28 @@ export class BoardComponent implements OnInit {
   rows: number[];
   hints: Array<Array<ColorModel>> = [];
   guesses: Array<Array<ColorModel>> = [];
-  currentTurn: number = 0;
+  activeRowIndex: number = 8;
   code: ColorModel[];
 
   constructor(private gameService: GameService) {}
 
   ngOnInit(): void {
-    this.gameService.onNewGameStart.subscribe((game) => {
-      this.game = this.gameService.getGame();
-      this.rows = Array.from(Array(this.rowsCount).keys());
-      this.hints = this.gameService.getHints();
-      this.guesses = this.gameService.getGuesses();
-      this.currentTurn = this.gameService.getCurrentTurn();
-      this.code = this.gameService.getCode();
+    this.gameService.onNewGameStart.subscribe(() => {
+      this.redrawBoard();
     });
+    this.gameService.onTurnChange.subscribe(() => this.redrawBoard());
     this.gameService.startNewGame();
+  }
+
+  redrawBoard() {
+    this.game = this.gameService.getGame();
+    this.rows = Array.from(Array(this.rowsCount).keys());
+    this.hints = this.gameService.getHints();
+    this.guesses = this.gameService.getGuesses();
+    this.activeRowIndex = this.gameService.getActiveRowIndex();
+    this.code = this.gameService.getCode();
+    console.log(this.game);
+    console.log(this.activeRowIndex);
   }
 
   onColorGuess = (index: number) => {

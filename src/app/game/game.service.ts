@@ -1,6 +1,7 @@
 import { EventEmitter } from '@angular/core';
 import { ColorModel } from './color.model';
 import { GameModel } from './game.model';
+import { NgTemplateOutlet } from '@angular/common';
 
 const colors: ColorModel[] = [
   new ColorModel('pink', 'hotpink'),
@@ -13,13 +14,19 @@ const colors: ColorModel[] = [
   new ColorModel('sea', 'lightseagreen'),
 ];
 
+interface GuessResult {
+  isWellPlaced: boolean;
+  isInCode: boolean;
+}
+
 export class GameService {
   private game: GameModel;
   private availableColors: ColorModel[] = colors;
   private codeLength: 4 | 5 = 4;
   selectedColor: ColorModel;
   onSelectedColorChange = new EventEmitter<ColorModel>();
-  onNewGameStart = new EventEmitter<GameModel>();
+  onNewGameStart = new EventEmitter<undefined>();
+  onTurnChange = new EventEmitter<undefined>();
 
   getAvailableColors() {
     return this.availableColors;
@@ -60,8 +67,7 @@ export class GameService {
   startNewGame() {
     this.game = new GameModel(this.generateCode());
     this.selectedColor = this.availableColors[0];
-    // this.onSelectedColorChange.emit(this.selectedColor);
-    this.onNewGameStart.emit(this.game);
+    this.onNewGameStart.emit();
     console.log(this.game);
   }
 
@@ -70,13 +76,17 @@ export class GameService {
     this.onSelectedColorChange.emit(this.selectedColor);
   }
 
+  getActiveRowIndex() {
+    return this.game.maxTurn - 1 - this.game.currentTurn;
+  }
+
   finishGame() {
     this.game.gameInProgress = false;
     this.startNewGame();
   }
 
   getActiveRow() {
-    return this.game.guesses[this.game.maxTurn - 1];
+    return this.game.guesses[this.getActiveRowIndex()];
   }
 
   onColorGuess(index: number) {
@@ -84,17 +94,48 @@ export class GameService {
   }
 
   onCheck() {
-    console.log(this.getCode());
-    console.log(this.getActiveRow());
-    console.log(this.getCode() === this.getActiveRow());
     const activeRow = this.getActiveRow();
-    const results = this.getCode().map((color, index) => {
-      return color.id === activeRow[index].id;
+    const code = this.getCode();
+    const results: GuessResult[] = activeRow.map((color, index) => {
+      return {
+        isWellPlaced: color.id === code[index].id,
+        isInCode: !!code.find((c) => c.id === color.id),
+      };
     });
     console.log(results);
-    if (!results.includes(false)) {
-      console.log('Win');
+
+    if (!results.find((result) => result.isWellPlaced === false)) {
+      // **** WIN *****
       this.finishGame();
+    } else {
+      this.getGuesses()[this.getActiveRowIndex()] = activeRow;
+      this.getHints()[this.getActiveRowIndex()] =
+        this.mapGuessResultToHints(results);
+      this.game.currentTurn++;
+      this.onTurnChange.emit();
     }
+  }
+
+  mapGuessResultToHints(guessResult: GuessResult[]): ColorModel[] {
+    return guessResult
+      .map((guess) => {
+        if (guess.isInCode && !guess.isWellPlaced) {
+          return {
+            id: 'white',
+            color: 'white',
+          };
+        } else if (guess.isWellPlaced) {
+          return {
+            id: 'black',
+            color: 'black',
+          };
+        } else return this.game.emptyColor;
+      })
+      .sort((color) => {
+        if (color.id === 'black') return -1;
+        if (color.id === 'white') {
+          return 0;
+        } else return 1;
+      });
   }
 }

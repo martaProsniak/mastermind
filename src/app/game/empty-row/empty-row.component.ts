@@ -9,11 +9,10 @@ import { ColorModel } from '../color.model';
 export class EmptyRowComponent {
   @Input() colors: ColorModel[];
   @Input() onClick: (index: number) => void;
-  @Input() currentTurn: number = 0;
-
+  @Input() showPointer: boolean;
 
   handleClick(index: number) {
-    console.log(index);
+    if (!this.showPointer) return;
 
     if (this.onClick) {
       this.onClick(index);
