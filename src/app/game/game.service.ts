@@ -134,7 +134,7 @@ export class GameService {
       .sort((color) => {
         if (color.id === 'black') return -1;
         if (color.id === 'white') {
-          return 0;
+          return -1;
         } else return 1;
       });
   }
