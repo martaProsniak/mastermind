@@ -1,12 +1,13 @@
 import { ColorModel } from './color.model';
 
+export type GameStatus = 'success' | 'fail' | 'notStarted' | 'inProgress';
+
 export class GameModel {
   code: ColorModel[];
   guesses: Array<Array<ColorModel>> = [];
   hints: Array<Array<ColorModel>> = [];
   maxTurn: 9 = 9;
-  gameInProgress = false;
-  isWin = false;
+  gameStatus: GameStatus = 'notStarted';
   activeGuessRow: ColorModel[] = [];
   rowLength: number;
   currentTurn: number;
@@ -17,7 +18,7 @@ export class GameModel {
 
   constructor(code: ColorModel[]) {
     this.code = code;
-    this.gameInProgress = true;
+    this.gameStatus = 'inProgress';
     this.rowLength = code.length;
     this.currentTurn = 0;
     this.hints = this.createDotsMatrix();

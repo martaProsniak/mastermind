@@ -1,6 +1,6 @@
 import { EventEmitter } from '@angular/core';
 import { ColorModel } from './color.model';
-import { GameModel } from './game.model';
+import { GameModel, GameStatus } from './game.model';
 import { NgTemplateOutlet } from '@angular/common';
 
 const colors: ColorModel[] = [
@@ -23,6 +23,7 @@ export class GameService {
   onSelectedColorChange = new EventEmitter<ColorModel>();
   onNewGameStart = new EventEmitter<GameModel>();
   onTurnChange = new EventEmitter<GameModel>();
+  onStatusChange = new EventEmitter<GameStatus>();
 
   getAvailableColors() {
     return this.availableColors;
@@ -57,8 +58,8 @@ export class GameService {
     this.code = this.game.code;
     this.selectedColor = this.availableColors[0];
     this.onNewGameStart.emit(this.game);
+    this.onStatusChange.emit(this.game.gameStatus);
     this.onSelectedColorChange.emit(this.selectedColor);
-    console.log(this.game);
   }
 
   changeSelectedColor(color: ColorModel) {
@@ -70,9 +71,9 @@ export class GameService {
     return this.game.maxTurn - 1 - this.game.currentTurn;
   }
 
-  finishGame() {
-    this.game.gameInProgress = false;
-    this.startNewGame();
+  finishGame(isWin: boolean) {
+    this.game.gameStatus = isWin ? 'success' : 'fail';
+    this.onStatusChange.emit(this.game.gameStatus);
   }
 
   getActiveRow() {
@@ -85,19 +86,18 @@ export class GameService {
 
   onCheck() {
     const activeRow = this.getActiveRow();
-
     const results = this.createHintsArray(activeRow);
 
     if (!results.filter((color) => color !== this.game.blackColor).length) {
-      // **** WIN *****
-      this.finishGame();
+      this.finishGame(true);
     } else {
       this.game.guesses[this.getActiveRowIndex()] = activeRow;
       this.game.hints[this.getActiveRowIndex()] = results;
       this.game.currentTurn++;
-      console.log(this.game.currentTurn);
-      console.log(this.game.maxTurn);
-
+      if (this.game.currentTurn === this.game.maxTurn) {
+        this.finishGame(false);
+        return;
+      }
       this.onTurnChange.emit(this.game);
     }
   }
@@ -122,26 +122,18 @@ export class GameService {
         if (!isInCode) {
           badGuesses.push(this.game.badGuessColor);
         } else {
-          const occurenceInRemainingCode = clonedCode.filter(
+          const possibleHits = clonedCode.filter(
             (c) => c === currentColor
           ).length;
-          const occurenceInRemainingRow = clonedActiveRow.filter(
+          const remainingInRow = clonedActiveRow.filter(
             (c) => c === currentColor
           ).length;
-          if (occurenceInRemainingRow > occurenceInRemainingCode) {
+          if (remainingInRow > possibleHits) {
             badGuesses.push(this.game.badGuessColor);
           } else whites.push(this.game.whiteColor);
         }
       }
     }
     return [...blacks, ...whites, ...badGuesses];
-  }
-
-  getHintColor(color: ColorModel, index: number) {
-    if (color.id === this.code[index].id) {
-      return this.game.blackColor;
-    } else if (this.code.find((c) => c.id === color.id)) {
-      return this.game.whiteColor;
-    } else return this.game.badGuessColor;
   }
 }
