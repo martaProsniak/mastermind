@@ -14,19 +14,15 @@ const colors: ColorModel[] = [
   new ColorModel('sea', 'lightseagreen'),
 ];
 
-interface GuessResult {
-  isWellPlaced: boolean;
-  isInCode: boolean;
-}
-
 export class GameService {
   private game: GameModel;
   private availableColors: ColorModel[] = colors;
+  private code: ColorModel[];
   private codeLength: 4 | 5 = 4;
   selectedColor: ColorModel;
   onSelectedColorChange = new EventEmitter<ColorModel>();
-  onNewGameStart = new EventEmitter<undefined>();
-  onTurnChange = new EventEmitter<undefined>();
+  onNewGameStart = new EventEmitter<GameModel>();
+  onTurnChange = new EventEmitter<GameModel>();
 
   getAvailableColors() {
     return this.availableColors;
@@ -38,14 +34,6 @@ export class GameService {
 
   getGame() {
     return this.game;
-  }
-
-  getHints() {
-    return this.game.hints;
-  }
-
-  getGuesses() {
-    return this.game.guesses;
   }
 
   getCurrentTurn() {
@@ -66,8 +54,10 @@ export class GameService {
 
   startNewGame() {
     this.game = new GameModel(this.generateCode());
+    this.code = this.game.code;
     this.selectedColor = this.availableColors[0];
-    this.onNewGameStart.emit();
+    this.onNewGameStart.emit(this.game);
+    this.onSelectedColorChange.emit(this.selectedColor);
     console.log(this.game);
   }
 
@@ -95,47 +85,63 @@ export class GameService {
 
   onCheck() {
     const activeRow = this.getActiveRow();
-    const code = this.getCode();
-    const results: GuessResult[] = activeRow.map((color, index) => {
-      return {
-        isWellPlaced: color.id === code[index].id,
-        isInCode: !!code.find((c) => c.id === color.id),
-      };
-    });
-    console.log(results);
 
-    if (!results.find((result) => result.isWellPlaced === false)) {
+    const results = this.createHintsArray(activeRow);
+
+    if (!results.filter((color) => color !== this.game.blackColor).length) {
       // **** WIN *****
       this.finishGame();
     } else {
-      this.getGuesses()[this.getActiveRowIndex()] = activeRow;
-      this.getHints()[this.getActiveRowIndex()] =
-        this.mapGuessResultToHints(results);
+      this.game.guesses[this.getActiveRowIndex()] = activeRow;
+      this.game.hints[this.getActiveRowIndex()] = results;
       this.game.currentTurn++;
-      this.onTurnChange.emit();
+      console.log(this.game.currentTurn);
+      console.log(this.game.maxTurn);
+
+      this.onTurnChange.emit(this.game);
     }
   }
 
-  mapGuessResultToHints(guessResult: GuessResult[]): ColorModel[] {
-    return guessResult
-      .map((guess) => {
-        if (guess.isInCode && !guess.isWellPlaced) {
-          return {
-            id: 'white',
-            color: 'white',
-          };
-        } else if (guess.isWellPlaced) {
-          return {
-            id: 'black',
-            color: 'black',
-          };
-        } else return this.game.emptyColor;
-      })
-      .sort((color) => {
-        if (color.id === 'black') return -1;
-        if (color.id === 'white') {
-          return -1;
-        } else return 1;
-      });
+  createHintsArray(activeRow: ColorModel[]) {
+    let clonedActiveRow = activeRow.slice();
+    let clonedCode = this.code.slice();
+
+    let blacks: ColorModel[] = [];
+    let whites: ColorModel[] = [];
+    let badGuesses: ColorModel[] = [];
+    let currentColor: ColorModel;
+
+    for (let i = 0; i < activeRow.length; i++) {
+      currentColor = activeRow[i];
+      if (this.code[i] === currentColor) {
+        blacks.push(this.game.blackColor);
+        clonedCode = clonedCode.filter((color, index) => index !== i);
+        clonedActiveRow = clonedActiveRow.filter((color, index) => index !== i);
+      } else {
+        const isInCode = !!clonedCode.filter((c) => c === currentColor).length;
+        if (!isInCode) {
+          badGuesses.push(this.game.badGuessColor);
+        } else {
+          const occurenceInRemainingCode = clonedCode.filter(
+            (c) => c === currentColor
+          ).length;
+          const occurenceInRemainingRow = clonedActiveRow.filter(
+            (c) => c === currentColor
+          ).length;
+          if (occurenceInRemainingRow > occurenceInRemainingCode) {
+            badGuesses.push(this.game.badGuessColor);
+          } else whites.push(this.game.whiteColor);
+        }
+      }
+    }
+    return [...blacks, ...whites, ...badGuesses];
+  }
+
+  getHintColor(color: ColorModel, index: number) {
+    if (color.id === this.code[index].id) {
+      return this.game.blackColor;
+    } else if (this.code.find((c) => c.id === color.id)) {
+      return this.game.whiteColor;
+    } else return this.game.badGuessColor;
   }
 }

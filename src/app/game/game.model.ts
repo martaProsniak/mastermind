@@ -11,6 +11,9 @@ export class GameModel {
   rowLength: number;
   currentTurn: number;
   emptyColor: ColorModel = new ColorModel('empty', '#64748b');
+  badGuessColor: ColorModel = new ColorModel('bad-guess', '#94a3b8', 1);
+  blackColor: ColorModel = new ColorModel('black', '#030712', 3);
+  whiteColor: ColorModel = new ColorModel('white', '#f9fafb', 2);
 
   constructor(code: ColorModel[]) {
     this.code = code;
@@ -25,7 +28,7 @@ export class GameModel {
     return Array.from(Array(this.maxTurn).keys()).map(() => {
       return Array.from(Array(this.rowLength).keys()).map(() => {
         return this.emptyColor;
-      })
+      });
     });
   }
 }

@@ -20,20 +20,20 @@ export class BoardComponent implements OnInit {
   constructor(private gameService: GameService) {}
 
   ngOnInit(): void {
-    this.gameService.onNewGameStart.subscribe(() => {
-      this.redrawBoard();
+    this.gameService.onNewGameStart.subscribe((game: GameModel) => {
+      this.redrawBoard(game);
     });
-    this.gameService.onTurnChange.subscribe(() => this.redrawBoard());
+    this.gameService.onTurnChange.subscribe((game: GameModel) =>
+      this.redrawBoard(game)
+    );
     this.gameService.startNewGame();
   }
 
-  redrawBoard() {
-    this.game = this.gameService.getGame();
+  redrawBoard(game: GameModel) {
+    this.game = game;
     this.rows = Array.from(Array(this.rowsCount).keys());
-    this.hints = this.gameService.getHints();
-    this.guesses = this.gameService.getGuesses();
     this.activeRowIndex = this.gameService.getActiveRowIndex();
-    this.code = this.gameService.getCode();
+
     console.log(this.game);
     console.log(this.activeRowIndex);
   }
