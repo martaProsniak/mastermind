@@ -28,7 +28,7 @@ import { HintRowComponent } from './game/hint-row/hint-row.component';
     FooterComponent,
     AvailableColorsComponent,
     EmptyRowComponent,
-    HintRowComponent,
+    HintRowComponent
   ],
   imports: [BrowserModule],
   providers: [GameService],

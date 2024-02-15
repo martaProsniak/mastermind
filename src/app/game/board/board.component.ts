@@ -1,6 +1,6 @@
 import { Component, OnChanges, OnInit } from '@angular/core';
 import { GameService } from '../game.service';
-import { GameModel } from '../game.model';
+import { GameModel, GameStatus } from '../game.model';
 import { ColorModel } from '../color.model';
 
 @Component({
@@ -16,6 +16,7 @@ export class BoardComponent implements OnInit {
   guesses: Array<Array<ColorModel>> = [];
   activeRowIndex: number = 8;
   code: ColorModel[];
+  gameStatus: GameStatus;
 
   constructor(private gameService: GameService) {}
 
@@ -27,13 +28,12 @@ export class BoardComponent implements OnInit {
       this.redrawBoard(game)
     );
     this.gameService.onStatusChange.subscribe((status) => {
+      this.gameStatus = status;
       if (status === 'success') {
         confirm('You won!');
-        this.gameService.startNewGame();
       }
       if (status === 'fail') {
         confirm('You loose!');
-        this.gameService.startNewGame();
       }
     });
     this.gameService.startNewGame();

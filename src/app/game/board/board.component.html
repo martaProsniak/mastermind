@@ -1,5 +1,5 @@
 <div class="bg-slate-700 rounded-lg w-[340px] py-4">
-  <color-code [code]="game.code"></color-code>
+  <color-code [code]="game.code" [showCode]="gameStatus === 'success' || gameStatus === 'fail'"></color-code>
   <hr>
   <div class="p-4 flex flex-wrap gap-y-3">
     <div *ngFor="let item of rows; let i = index" class="w-full flex gap-x-4 items-center">
@@ -8,6 +8,6 @@
     </div>
   </div>
   <div class="w-full mt-2">
-    <button (click)="onCheck()" class="mx-auto block px-6 py-2 rounded-md bg-slate-600 cursor-pointer">Check</button>
+    <button class="mx-auto block px-6 py-2 rounded-md bg-slate-600 cursor-pointer" (click)="onCheck()" >Check</button>
   </div>
 </div>

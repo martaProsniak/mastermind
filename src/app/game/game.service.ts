@@ -14,6 +14,10 @@ const colors: ColorModel[] = [
   new ColorModel('sea', 'lightseagreen'),
 ];
 
+interface GameSettings {
+  codeLength: number;
+}
+
 export class GameService {
   private game: GameModel;
   private availableColors: ColorModel[] = colors;
@@ -24,6 +28,12 @@ export class GameService {
   onNewGameStart = new EventEmitter<GameModel>();
   onTurnChange = new EventEmitter<GameModel>();
   onStatusChange = new EventEmitter<GameStatus>();
+
+  getSettings(): GameSettings {
+    return {
+      codeLength: this.codeLength
+    }
+  }
 
   getAvailableColors() {
     return this.availableColors;
@@ -89,6 +99,7 @@ export class GameService {
     const results = this.createHintsArray(activeRow);
 
     if (!results.filter((color) => color !== this.game.blackColor).length) {
+      this.game.hints[this.getActiveRowIndex()] = results;
       this.finishGame(true);
     } else {
       this.game.guesses[this.getActiveRowIndex()] = activeRow;
@@ -115,20 +126,20 @@ export class GameService {
       currentColor = activeRow[i];
       if (this.code[i] === currentColor) {
         blacks.push(this.game.blackColor);
-        clonedCode = clonedCode.filter((color, index) => index !== i);
-        clonedActiveRow = clonedActiveRow.filter((color, index) => index !== i);
+        clonedCode = clonedCode.filter((_color, index) => index !== i);
+        clonedActiveRow = clonedActiveRow.filter((_color, index) => index !== i);
       } else {
         const isInCode = !!clonedCode.filter((c) => c === currentColor).length;
         if (!isInCode) {
           badGuesses.push(this.game.badGuessColor);
         } else {
-          const possibleHits = clonedCode.filter(
+          const possibleHitsCount = clonedCode.filter(
             (c) => c === currentColor
           ).length;
-          const remainingInRow = clonedActiveRow.filter(
+          const remainingInRowCount = clonedActiveRow.filter(
             (c) => c === currentColor
           ).length;
-          if (remainingInRow > possibleHits) {
+          if (remainingInRowCount > possibleHitsCount) {
             badGuesses.push(this.game.badGuessColor);
           } else whites.push(this.game.whiteColor);
         }

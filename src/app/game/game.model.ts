@@ -12,9 +12,9 @@ export class GameModel {
   rowLength: number;
   currentTurn: number;
   emptyColor: ColorModel = new ColorModel('empty', '#64748b');
-  badGuessColor: ColorModel = new ColorModel('bad-guess', '#94a3b8', 1);
-  blackColor: ColorModel = new ColorModel('black', '#030712', 3);
-  whiteColor: ColorModel = new ColorModel('white', '#f9fafb', 2);
+  badGuessColor: ColorModel = new ColorModel('bad-guess', '#94a3b8');
+  blackColor: ColorModel = new ColorModel('black', '#030712');
+  whiteColor: ColorModel = new ColorModel('white', '#f9fafb');
 
   constructor(code: ColorModel[]) {
     this.code = code;
