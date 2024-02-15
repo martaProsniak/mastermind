@@ -1,4 +1,7 @@
-import { Component, Input } from '@angular/core';
+import {
+  Component,
+  Input,
+} from '@angular/core';
 import { ColorModel } from '../color.model';
 
 @Component({
@@ -8,4 +11,5 @@ import { ColorModel } from '../color.model';
 })
 export class HintRowComponent {
   @Input() colors: ColorModel[];
+  @Input() hintWidth: string;
 }

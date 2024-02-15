@@ -1,9 +1,4 @@
-import {
-  Component,
-  Input,
-  OnChanges,
-  OnInit,
-} from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { ColorModel } from '../color.model';
 
 @Component({
@@ -14,8 +9,9 @@ import { ColorModel } from '../color.model';
 export class ColorDotComponent implements OnInit, OnChanges {
   @Input() color: ColorModel;
   @Input() isSelected: boolean;
-  @Input() onColorClick: ((color: ColorModel) => void);
+  @Input() onColorClick: (color: ColorModel) => void;
   @Input() isSmall: boolean = false;
+  @Input() moreInRow = false;
   @Input() showPointer: boolean = true;
   animateClass: string;
   sizeClasses: string = 'h-10 w-10';
@@ -23,12 +19,11 @@ export class ColorDotComponent implements OnInit, OnChanges {
   ngOnInit(): void {
     this.animateClass = this.isSelected ? 'animate-pulse' : '';
     if (this.isSmall) {
-      this.sizeClasses = 'h-5 w-5'
+      this.sizeClasses = this.moreInRow ? 'h-3 w-3' : 'h-4 w-4';
     }
   }
 
   ngOnChanges(): void {
     this.animateClass = this.isSelected ? 'animate-pulse' : '';
   }
-
 }

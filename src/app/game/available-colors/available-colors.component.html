@@ -1,4 +1,4 @@
-<div class="flex gap-3 flex-wrap mb-6">
+<div class="flex gap-3 flex-wrap mb-6 max-w-[240px] justify-center dark:bg-slate-900 rounded-md py-5 mx-auto">
     <color-dot *ngFor="let color of colors" [color]="color"
                [isSelected]="selectedColor === color"
                (click)="onColorClick(color)"></color-dot>

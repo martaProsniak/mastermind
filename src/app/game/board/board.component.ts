@@ -17,6 +17,7 @@ export class BoardComponent implements OnInit {
   activeRowIndex: number = 8;
   code: ColorModel[];
   gameStatus: GameStatus;
+  boardWidth: string;
 
   constructor(private gameService: GameService) {}
 
@@ -43,6 +44,7 @@ export class BoardComponent implements OnInit {
     this.game = game;
     this.rows = Array.from(Array(this.rowsCount).keys());
     this.activeRowIndex = this.gameService.getActiveRowIndex();
+    this.boardWidth = this.game.code.length === 4 ? '320px' : '340px';
   }
 
   onColorGuess = (index: number) => {

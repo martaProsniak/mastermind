@@ -15,24 +15,27 @@ const colors: ColorModel[] = [
 ];
 
 interface GameSettings {
-  codeLength: number;
+  codeLength: CodeLength;
 }
+
+export type CodeLength = 4 | 5;
 
 export class GameService {
   private game: GameModel;
   private availableColors: ColorModel[] = colors;
   private code: ColorModel[];
-  private codeLength: 4 | 5 = 4;
+  private codeLength: CodeLength = 4;
   selectedColor: ColorModel;
   onSelectedColorChange = new EventEmitter<ColorModel>();
   onNewGameStart = new EventEmitter<GameModel>();
   onTurnChange = new EventEmitter<GameModel>();
   onStatusChange = new EventEmitter<GameStatus>();
+  onCodeLengthChanged = new EventEmitter<CodeLength>();
 
   getSettings(): GameSettings {
     return {
-      codeLength: this.codeLength
-    }
+      codeLength: this.codeLength,
+    };
   }
 
   getAvailableColors() {
@@ -53,6 +56,12 @@ export class GameService {
 
   getRandomIndex(max: number = 8) {
     return Math.floor(Math.random() * max);
+  }
+
+  changeCodeLength(newLength: CodeLength) {
+    this.codeLength = newLength;
+    this.onCodeLengthChanged.emit(this.codeLength);
+    this.startNewGame();
   }
 
   generateCode() {
@@ -127,7 +136,9 @@ export class GameService {
       if (this.code[i] === currentColor) {
         blacks.push(this.game.blackColor);
         clonedCode = clonedCode.filter((_color, index) => index !== i);
-        clonedActiveRow = clonedActiveRow.filter((_color, index) => index !== i);
+        clonedActiveRow = clonedActiveRow.filter(
+          (_color, index) => index !== i
+        );
       } else {
         const isInCode = !!clonedCode.filter((c) => c === currentColor).length;
         if (!isInCode) {
