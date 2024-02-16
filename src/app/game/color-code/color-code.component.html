@@ -1,5 +1,5 @@
 <div class="flex gap-3 px-4 pb-4">
-    <color-dot *ngFor="let color of code" [color]="color" [showPointer]="false"></color-dot>
+    <color-dot *ngFor="let color of code" [color]="showCode ? color : defaultColor" [showPointer]="false"></color-dot>
     <div class="flex">
       <div></div>
       <div></div>
