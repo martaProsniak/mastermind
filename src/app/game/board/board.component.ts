@@ -30,12 +30,6 @@ export class BoardComponent implements OnInit {
     );
     this.gameService.onStatusChange.subscribe((status) => {
       this.gameStatus = status;
-      if (status === 'success') {
-        confirm('You won!');
-      }
-      if (status === 'fail') {
-        confirm('You loose!');
-      }
     });
     this.gameService.startNewGame();
   }

@@ -135,27 +135,33 @@ export class GameService {
       currentColor = activeRow[i];
       if (this.code[i] === currentColor) {
         blacks.push(this.game.blackColor);
-        clonedCode = clonedCode.filter((_color, index) => index !== i);
+        const indexToRemove = clonedCode.findIndex((c) => c === currentColor);
+        clonedCode = clonedCode.filter((_c, i) => i !== indexToRemove);
+        // console.log('after splice code', clonedCode.length);
         clonedActiveRow = clonedActiveRow.filter(
-          (_color, index) => index !== i
+          (_c, i) => i !== indexToRemove
         );
-      } else {
-        const isInCode = !!clonedCode.filter((c) => c === currentColor).length;
-        if (!isInCode) {
-          badGuesses.push(this.game.badGuessColor);
-        } else {
-          const possibleHitsCount = clonedCode.filter(
-            (c) => c === currentColor
-          ).length;
-          const remainingInRowCount = clonedActiveRow.filter(
-            (c) => c === currentColor
-          ).length;
-          if (remainingInRowCount > possibleHitsCount) {
-            badGuesses.push(this.game.badGuessColor);
-          } else whites.push(this.game.whiteColor);
-        }
+        // console.log('after splice row', clonedActiveRow.length);
+
+        // console.log('CODE');
+        // console.table(clonedCode);
+
+        // console.log('PURGED ROW');
+        // console.table(clonedActiveRow);
       }
     }
+
+    clonedActiveRow.forEach((color) => {
+      const colorFromCode = clonedCode.find((c) => c === color);
+      if (colorFromCode) {
+        whites.push(this.game.whiteColor);
+        const index = clonedCode.findIndex((c) => c === color);
+        clonedCode.splice(index, 1);
+      } else {
+        badGuesses.push(this.game.badGuessColor);
+      }
+    });
+
     return [...blacks, ...whites, ...badGuesses];
   }
 }

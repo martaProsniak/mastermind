@@ -7,8 +7,5 @@ import { Component, OnInit } from '@angular/core';
   styleUrl: './game.component.css',
 })
 export class GameComponent {
-  // constructor(private gameService: GameService) { };
-  // ngOnInit(): void {
-  //   // this.gameService.startNewGame();
-  // }
+
 }
