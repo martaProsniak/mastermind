@@ -14,8 +14,6 @@ export class SettingsComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentCodeLength = this.gameService.getSettings().codeLength;
-    console.log(this.currentCodeLength);
-    console.log(this.codeLengthOptions);
   }
 
   onStartNewGame() {

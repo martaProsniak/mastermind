@@ -1,7 +1,6 @@
 import { EventEmitter } from '@angular/core';
 import { ColorModel } from './color.model';
 import { GameModel, GameStatus } from './game.model';
-import { NgTemplateOutlet } from '@angular/common';
 
 const colors: ColorModel[] = [
   new ColorModel('pink', 'hotpink'),
@@ -129,34 +128,24 @@ export class GameService {
     let blacks: ColorModel[] = [];
     let whites: ColorModel[] = [];
     let badGuesses: ColorModel[] = [];
-    let currentColor: ColorModel;
 
-    for (let i = 0; i < activeRow.length; i++) {
-      currentColor = activeRow[i];
+    activeRow.forEach((currentColor, i) => {
       if (this.code[i] === currentColor) {
         blacks.push(this.game.blackColor);
         const indexToRemove = clonedCode.findIndex((c) => c === currentColor);
-        clonedCode = clonedCode.filter((_c, i) => i !== indexToRemove);
-        // console.log('after splice code', clonedCode.length);
+        clonedCode = clonedCode.filter((_c, index) => index !== indexToRemove);
         clonedActiveRow = clonedActiveRow.filter(
-          (_c, i) => i !== indexToRemove
+          (_c, index) => index !== indexToRemove
         );
-        // console.log('after splice row', clonedActiveRow.length);
-
-        // console.log('CODE');
-        // console.table(clonedCode);
-
-        // console.log('PURGED ROW');
-        // console.table(clonedActiveRow);
       }
-    }
+    })
 
     clonedActiveRow.forEach((color) => {
-      const colorFromCode = clonedCode.find((c) => c === color);
+      const colorFromCode = clonedCode.some((c) => c === color);
       if (colorFromCode) {
         whites.push(this.game.whiteColor);
         const index = clonedCode.findIndex((c) => c === color);
-        clonedCode.splice(index, 1);
+        clonedCode = clonedCode.filter((_c, i) => index !== i);
       } else {
         badGuesses.push(this.game.badGuessColor);
       }

@@ -1,10 +1,12 @@
 <div class="flex gap-2 mb-5 justify-center flex-wrap flex-col">
-  <button class="block px-6 py-2 rounded-md bg-slate-600 cursor-pointer" (click)="onStartNewGame()">Start new
+  <button type="button" class="block px-6 py-2 rounded-md bg-slate-600 cursor-pointer" (click)="onStartNewGame()">Start new
     game</button>
-  <select class="block px-6 py-2 rounded-md bg-slate-600 cursor-pointer text-center" id="codeLength"
-    (change)="onCodeLengthChange()" [(ngModel)]="currentCodeLength">
-    <option *ngFor="let option of codeLengthOptions" [ngValue]="option">Code length: {{option}}</option>
-  </select>
+  <div class="block px-6 py-2 rounded-md bg-slate-600 cursor-pointer text-center">
+    <select id="codeLength" class="bg-slate-600"
+            (change)="onCodeLengthChange()" [(ngModel)]="currentCodeLength">
+      <option *ngFor="let option of codeLengthOptions" [ngValue]="option">Code length: {{option}}</option>
+    </select>
+  </div>
 </div>
 
 
