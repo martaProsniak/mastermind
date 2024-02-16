@@ -7,5 +7,18 @@
     <game-board></game-board>
   </section>
 </main>
-<modal>Siemano</modal>
+<modal>
+  @if(gameStatus === 'success') {
+    <h4 class="text-lg font-semibold mb-4">Congratulations!</h4>
+    <p>You've guessed the code in {{turn + 1}} {{turn > 1 ? 'turns' : 'turn'}} </p>
+
+  }
+  @if (gameStatus === 'fail'){
+    <h4 class="text-lg font-semibold mb-4">Sorry!</h4>
+    <p>You haven't guess the code this time.</p>
+  }
+  @if(gameStatus === 'inProgress') {
+    <div>Siemanko</div>
+  }
+</modal>
 

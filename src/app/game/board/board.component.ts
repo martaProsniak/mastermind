@@ -28,7 +28,7 @@ export class BoardComponent implements OnInit {
     this.gameService.onTurnChange.subscribe((game: GameModel) =>
       this.redrawBoard(game)
     );
-    this.gameService.onStatusChange.subscribe((status) => {
+    this.gameService.onStatusChange.subscribe(({status}) => {
       this.gameStatus = status;
     });
     this.gameService.startNewGame();

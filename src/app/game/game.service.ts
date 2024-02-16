@@ -28,7 +28,7 @@ export class GameService {
   onSelectedColorChange = new EventEmitter<ColorModel>();
   onNewGameStart = new EventEmitter<GameModel>();
   onTurnChange = new EventEmitter<GameModel>();
-  onStatusChange = new EventEmitter<GameStatus>();
+  onStatusChange = new EventEmitter<{ status: GameStatus; turn?: number }>();
   onCodeLengthChanged = new EventEmitter<CodeLength>();
 
   getSettings(): GameSettings {
@@ -76,7 +76,7 @@ export class GameService {
     this.code = this.game.code;
     this.selectedColor = this.availableColors[0];
     this.onNewGameStart.emit(this.game);
-    this.onStatusChange.emit(this.game.gameStatus);
+    this.onStatusChange.emit({ status: this.game.gameStatus });
     this.onSelectedColorChange.emit(this.selectedColor);
   }
 
@@ -91,7 +91,9 @@ export class GameService {
 
   finishGame(isWin: boolean) {
     this.game.gameStatus = isWin ? 'success' : 'fail';
-    this.onStatusChange.emit(this.game.gameStatus);
+    console.log(this.game.currentTurn);
+
+    this.onStatusChange.emit({ status: this.game.gameStatus, turn: this.game.currentTurn });
   }
 
   getActiveRow() {
@@ -122,8 +124,8 @@ export class GameService {
   }
 
   createHintsArray(activeRow: ColorModel[]) {
-    let clonedActiveRow = activeRow.slice();
-    let clonedCode = this.code.slice();
+    let copiedCode = this.code.slice();
+    let possibleHits: ColorModel[] = [];
 
     let blacks: ColorModel[] = [];
     let whites: ColorModel[] = [];
@@ -132,20 +134,17 @@ export class GameService {
     activeRow.forEach((currentColor, i) => {
       if (this.code[i] === currentColor) {
         blacks.push(this.game.blackColor);
-        const indexToRemove = clonedCode.findIndex((c) => c === currentColor);
-        clonedCode = clonedCode.filter((_c, index) => index !== indexToRemove);
-        clonedActiveRow = clonedActiveRow.filter(
-          (_c, index) => index !== indexToRemove
-        );
-      }
-    })
+        const indexToRemove = copiedCode.findIndex((c) => c === currentColor);
+        copiedCode = copiedCode.filter((_c, index) => index !== indexToRemove);
+      } else possibleHits.push(currentColor);
+    });
 
-    clonedActiveRow.forEach((color) => {
-      const colorFromCode = clonedCode.some((c) => c === color);
+    possibleHits.forEach((color) => {
+      const colorFromCode = copiedCode.some((c) => c === color);
       if (colorFromCode) {
         whites.push(this.game.whiteColor);
-        const index = clonedCode.findIndex((c) => c === color);
-        clonedCode = clonedCode.filter((_c, i) => index !== i);
+        const index = copiedCode.findIndex((c) => c === color);
+        copiedCode = copiedCode.filter((_c, i) => index !== i);
       } else {
         badGuesses.push(this.game.badGuessColor);
       }
