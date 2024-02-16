@@ -1,5 +1,6 @@
+import { ConfettiService } from '../confetti.service';
 import { ModalService } from '../modal/modal.service';
-import { GameModel, GameStatus } from './game.model';
+import { GameStatus } from './game.model';
 import { GameService } from './game.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -10,8 +11,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GameComponent implements OnInit {
   modalStyleObject = {
-    success: 'bg-gradient-to-r from-pink-700 to-amber-600 text-slate-300',
-    fail: 'bg-gradient-to-r from-teal-700 to-blue-700 text-slate-300',
+    success:
+      'bg-gradient-to-r from-red-300 from-10% via-pink-300 via-40% to-violet-300',
+    fail: 'bg-gradient-to-r from-emerald-200 to-sky-300',
     inProgress: 'bg-slate-300 text-zinc-800',
     notStarted: 'bg-slate-300 text-zinc-800',
   };
@@ -21,7 +23,8 @@ export class GameComponent implements OnInit {
 
   constructor(
     private gameService: GameService,
-    private modalService: ModalService
+    private modalService: ModalService,
+    private confettiService: ConfettiService
   ) {}
 
   ngOnInit(): void {
@@ -31,6 +34,9 @@ export class GameComponent implements OnInit {
       this.modalStyle = this.modalStyleObject[this.gameStatus];
       if (this.gameStatus === 'success' || this.gameStatus === 'fail') {
         this.modalService.openModal();
+      }
+      if (this.gameStatus === 'success') {
+        this.confettiService.startConfetti();
       }
     });
   }
