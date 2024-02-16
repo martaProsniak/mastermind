@@ -1,7 +1,7 @@
 import { EventEmitter } from '@angular/core';
 
 export class ModalService {
-  isOpen = false;
+  isOpen = true;
   onModalChange = new EventEmitter<boolean>();
 
   openModal() {

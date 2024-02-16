@@ -8,17 +8,22 @@
   </section>
 </main>
 <modal>
-  @if(gameStatus === 'success') {
-    <h4 class="text-lg font-semibold mb-4">Congratulations!</h4>
-    <p>You've guessed the code in {{turn + 1}} {{turn > 1 ? 'turns' : 'turn'}} </p>
-
-  }
-  @if (gameStatus === 'fail'){
-    <h4 class="text-lg font-semibold mb-4">Sorry!</h4>
-    <p>You haven't guess the code this time.</p>
-  }
-  @if(gameStatus === 'inProgress') {
-    <div>Siemanko</div>
-  }
+  <div
+    class="h-60 min-w-[280px] w-2/3 max-w-[500px] {{modalStyle}} text-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-md">
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2  ">
+        @if(gameStatus === 'success') {
+        <h4 class="text-xl font-semibold mb-4">Congratulations!</h4>
+        <p class="md:text-lg">You've guessed the code in {{turn + 1}} {{turn > 1 ? 'turns' : 'turn'}} </p>
+        }
+        @if (gameStatus === 'fail'){
+        <h4 class="text-xl font-semibold mb-4">Sorry!</h4>
+        <p class="md:text-lg">You haven't guess the code this time.</p>
+        }
+        @if(gameStatus === 'inProgress') {
+        <h4 class="text-xl font-semibold mb-4">Congratulations!</h4>
+        <p class="md:text-lg">You've guessed the code in 5 turns </p>
+        }
+    </div>
+  </div>
 </modal>
 

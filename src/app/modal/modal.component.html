@@ -1,9 +1,6 @@
 @if(isOpen) {
   <backdrop></backdrop>
-  <div (click)="onClose()"
-    class="h-80 min-w-[280px] w-2/3 max-w-[600px] bg-slate-200 text-zinc-800 text-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-md">
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-      <ng-content></ng-content>
-    </div>
+  <div class="fixed top-0 left-0 right-0 bottom-0" (click)="onClose()">
+    <ng-content></ng-content>
   </div>
 }
