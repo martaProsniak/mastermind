@@ -14,6 +14,9 @@ import { GameService } from './game/game.service';
 import { EmptyRowComponent } from './game/empty-row/empty-row.component';
 import { HintRowComponent } from './game/hint-row/hint-row.component';
 import { FormsModule } from '@angular/forms';
+import { BackdropComponent } from './backdrop/backdrop.component';
+import { ModalComponent } from './modal/modal.component';
+import { ModalService } from './modal/modal.service';
 
 @NgModule({
   declarations: [
@@ -27,10 +30,12 @@ import { FormsModule } from '@angular/forms';
     FooterComponent,
     AvailableColorsComponent,
     EmptyRowComponent,
-    HintRowComponent
+    HintRowComponent,
+    BackdropComponent,
+    ModalComponent
   ],
   imports: [BrowserModule, FormsModule],
-  providers: [GameService],
+  providers: [GameService, ModalService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

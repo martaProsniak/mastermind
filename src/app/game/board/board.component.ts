@@ -10,7 +10,7 @@ import { ColorModel } from '../color.model';
 })
 export class BoardComponent implements OnInit {
   game: GameModel;
-  rowsCount: number = 9;
+  rowsCount: number;
   rows: number[];
   hints: Array<Array<ColorModel>> = [];
   guesses: Array<Array<ColorModel>> = [];
@@ -36,6 +36,7 @@ export class BoardComponent implements OnInit {
 
   redrawBoard(game: GameModel) {
     this.game = game;
+    this.rowsCount = this.game.maxTurn;
     this.rows = Array.from(Array(this.rowsCount).keys());
     this.activeRowIndex = this.gameService.getActiveRowIndex();
     this.boardWidth = this.game.code.length === 4 ? '320px' : '340px';

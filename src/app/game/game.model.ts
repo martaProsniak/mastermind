@@ -6,7 +6,7 @@ export class GameModel {
   code: ColorModel[];
   guesses: Array<Array<ColorModel>> = [];
   hints: Array<Array<ColorModel>> = [];
-  maxTurn: 9 = 9;
+  maxTurn = 10;
   gameStatus: GameStatus = 'notStarted';
   activeGuessRow: ColorModel[] = [];
   rowLength: number;
