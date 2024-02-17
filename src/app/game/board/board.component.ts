@@ -29,7 +29,7 @@ export class BoardComponent implements OnInit {
     this.gameService.onTurnChange.subscribe((game: GameModel) =>
       this.redrawBoard(game)
     );
-    this.gameService.onStatusChange.subscribe(({status}) => {
+    this.gameService.onStatusChange.subscribe(({ status }) => {
       this.gameStatus = status;
     });
     this.gameService.startNewGame();
@@ -40,7 +40,7 @@ export class BoardComponent implements OnInit {
     this.rowsCount = this.game.maxTurn;
     this.rows = Array.from(Array(this.rowsCount).keys());
     this.activeRowIndex = this.gameService.getActiveRowIndex();
-    this.boardWidth = this.game.code.length === 4 ? '320px' : '340px';
+    this.boardWidth = this.game.code.length === 4 ? '280px' : '340px';
   }
 
   onColorGuess = (index: number) => {

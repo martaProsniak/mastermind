@@ -1,4 +1,4 @@
-import { Component, Input} from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ColorModel } from '../color.model';
 
 @Component({
@@ -14,11 +14,4 @@ export class ColorDotComponent {
   @Input() moreInRow = false;
   @Input() showPointer: boolean = true;
   animateClass: string;
-  sizeClasses: string = 'h-10 w-10';
-
-  ngOnInit(): void {
-    if (this.isSmall) {
-      this.sizeClasses = this.moreInRow ? 'h-3 w-3' : 'h-4 w-4';
-    }
-  }
 }
