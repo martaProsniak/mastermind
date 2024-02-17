@@ -12,6 +12,7 @@ import { Component, OnInit } from '@angular/core';
 export class GameComponent implements OnInit {
   gameStatus: GameStatus;
   turn: number;
+  codeLength: number;
 
   constructor(
     private gameService: GameService,
@@ -20,6 +21,17 @@ export class GameComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    if (!this.gameService.getGame()) {
+      this.gameService.startNewGame();
+    }
+
+    this.codeLength = this.gameService.getCode().length;
+    console.log(this.codeLength);
+
+    this.gameService.onCodeLengthChanged.subscribe((codeLength) => {
+      this.codeLength = codeLength;
+      console.log(codeLength);
+    });
     this.gameService.onStatusChange.subscribe(({ status, turn }) => {
       this.gameStatus = status;
       this.turn = turn;

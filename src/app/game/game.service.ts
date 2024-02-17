@@ -3,14 +3,14 @@ import { ColorModel } from './color.model';
 import { GameModel, GameStatus } from './game.model';
 
 const colors: ColorModel[] = [
-  new ColorModel('pink', 'hotpink'),
-  new ColorModel('blue', 'dodgerblue'),
-  new ColorModel('green', 'lightgreen'),
-  new ColorModel('red', 'lightcoral'),
-  new ColorModel('purple', 'rebeccapurple'),
-  new ColorModel('yellow', 'gold'),
-  new ColorModel('cream', 'linen'),
-  new ColorModel('sea', 'lightseagreen'),
+  new ColorModel('blue', '#1e25eb'),
+  new ColorModel('sky', '#0ca9f2'),
+  new ColorModel('green', '#25e310'),
+  new ColorModel('red', '#e80707'),
+  new ColorModel('pink', '#eb1ed3'),
+  new ColorModel('orange', '#e86807'),
+  new ColorModel('yellow', '#ebbe1e'),
+  new ColorModel('cream', '#ebe6e6'),
 ];
 
 interface GameSettings {

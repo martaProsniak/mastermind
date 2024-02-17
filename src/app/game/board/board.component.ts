@@ -36,10 +36,7 @@ export class BoardComponent implements OnInit {
     this.gameService.onCanCheckChanged.subscribe((canCheck) => {
       this.canCheck = canCheck;
     });
-
-    if (!this.gameService.getGame()) {
-      this.gameService.startNewGame();
-    } else this.renderBoard(this.gameService.getGame());
+    this.renderBoard(this.gameService.getGame());
   }
 
   renderBoard(game: GameModel) {
