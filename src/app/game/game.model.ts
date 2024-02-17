@@ -11,8 +11,8 @@ export class GameModel {
   activeGuessRow: ColorModel[] = [];
   rowLength: number;
   currentTurn: number;
-  emptyColor: ColorModel = new ColorModel('empty', '#64748b');
-  badGuessColor: ColorModel = new ColorModel('bad-guess', '#94a3b8');
+  emptyColor: ColorModel = new ColorModel('empty', '#a1a1aa');
+  badGuessColor: ColorModel = new ColorModel('bad-guess', '#71717a');
   blackColor: ColorModel = new ColorModel('black', '#030712');
   whiteColor: ColorModel = new ColorModel('white', '#f9fafb');
 

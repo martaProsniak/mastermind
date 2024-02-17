@@ -1,8 +1,8 @@
-<section id="settings" title="Settings" class="flex gap-y-6 mb-5 justify-center flex-wrap flex-row md:flex-col mx-auto max-w-[420px]">
-  <button type="button" class="block px-6 py-4 rounded-md bg-zinc-900 text-zinc-100 font-bold cursor-pointer shadow-sm w-[180px] mx-auto" title="Start new game" (click)="onStartNewGame()">Start new
+<section id="settings" title="Settings" class="flex gap-y-6 mb-5 justify-center flex-wrap flex-row md:flex-col mx-auto max-w-[360px]">
+  <button type="button" class="block px-4 py-4 rounded-md bg-gradient-to-r from-red-500 to-pink-500 text-zinc-100 font-bold cursor-pointer shadow-sm w-[160px] mx-auto" title="Start new game" (click)="onStartNewGame()">Start new
     game</button>
-  <div class="block px-6 py-4 rounded-md bg-slate-700 text-center shadow-sm w-[180px] mx-auto">
-    <select id="codeLength" class="bg-slate-700 cursor-pointer" name="change-turn" title="Change turn"
+  <div class="block px-6 py-4 rounded-md bg-zinc-700 text-center shadow-sm w-[160px] mx-auto">
+    <select id="codeLength" class="bg-zinc-700 cursor-pointer" name="change-turn" title="Change turn"
             (change)="onCodeLengthChange()" [(ngModel)]="currentCodeLength">
       <option *ngFor="let option of codeLengthOptions" [ngValue]="option">Code length: {{option}}</option>
     </select>

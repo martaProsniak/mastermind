@@ -1,18 +1,21 @@
-<div class=" min-h-screen bg-slate-800 text-neutral-100 font-fredoka w-full">
-  <div class="max-w-[1280px] mx-auto">
-    <div class="w-full md:w-11/12 lg:w-9/12  mx-auto md:flex justify-center md:justify-between">
+<div class=" min-h-screen  text-neutral-100 font-fredoka w-fit mx-auto">
+  <div class="max-w-[1280px]">
+    <div class="w-full md:w-11/12 lg:w-9/12  mx-auto md:flex justify-center">
       <div class="pt-10 md:pt-20">
         <nav class=" mb-6 mx-auto">
           <game-header />
           <ul class="space-y-10 mb-10 mt-10 md:mt-0">
             @if(url !== '/game') {
-            <li><button type="button" class="block px-6 py-4 mx-auto rounded-md bg-zinc-200 text-zinc-900 font-bold cursor-pointer shadow-sm w-[180px]">
+            <li><button type="button" class="block px-6 py-4 mx-auto rounded-md bg-gradient-to-r from-red-500 to-pink-500 text-zinc-200 font-bold cursor-pointer shadow-md w-[160px]">
                 <a routerLink="/game" class="block h-100 w-100">Play</a>
               </button></li>
             }
-            <li><button type="button" class="block px-6 py-4 mx-auto rounded-md bg-transparent border-2 border-zinc-100 text-zinc-100 font-bold cursor-pointer shadow-sm w-[180px]">
-                <a routerLink="/rules" class="block h-100 w-100">Rules</a>
-              </button></li>
+            @if(url !== '/rules') {
+              <li><button type="button"
+                  class="block px-6 py-4 mx-auto rounded-md bg-transparent bg-zinc-900 text-zinc-200 font-bold cursor-pointer shadow-md w-[160px]">
+                  <a routerLink="/rules" class="block h-100 w-100">Rules</a>
+                </button></li>
+            }
           </ul>
         </nav>
           @if(url === '/game') {
@@ -22,5 +25,5 @@
       <router-outlet></router-outlet>
     </div>
   </div>
-</div>
+
 
