@@ -19,31 +19,36 @@ export class BoardComponent implements OnInit {
   code: ColorModel[];
   gameStatus: GameStatus;
   boardWidth: string;
+  canCheck: boolean = false;
 
   constructor(private gameService: GameService) {}
 
   ngOnInit(): void {
     this.gameService.onNewGameStart.subscribe((game: GameModel) => {
-      this.redrawBoard(game);
+      this.renderBoard(game);
     });
     this.gameService.onTurnChange.subscribe((game: GameModel) =>
-      this.redrawBoard(game)
+      this.renderBoard(game)
     );
     this.gameService.onStatusChange.subscribe(({ status }) => {
       this.gameStatus = status;
     });
+    this.gameService.onCanCheckChanged.subscribe((canCheck) => {
+      this.canCheck = canCheck;
+    });
 
     if (!this.gameService.getGame()) {
       this.gameService.startNewGame();
-    } else this.redrawBoard(this.gameService.getGame());
+    } else this.renderBoard(this.gameService.getGame());
   }
 
-  redrawBoard(game: GameModel) {
+  renderBoard(game: GameModel) {
     this.game = game;
     this.rowsCount = this.game.maxTurn;
     this.rows = Array.from(Array(this.rowsCount).keys());
     this.activeRowIndex = this.gameService.getActiveRowIndex();
     this.boardWidth = this.game.code.length === 4 ? '280px' : '340px';
+    this.canCheck = this.gameService.canCheck;
   }
 
   onColorGuess = (index: number) => {

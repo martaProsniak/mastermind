@@ -24,12 +24,14 @@ export class GameService {
   private availableColors: ColorModel[] = colors;
   private code: ColorModel[];
   private codeLength: CodeLength = 4;
+  canCheck = false;
   selectedColor: ColorModel;
   onSelectedColorChange = new EventEmitter<ColorModel>();
   onNewGameStart = new EventEmitter<GameModel>();
   onTurnChange = new EventEmitter<GameModel>();
   onStatusChange = new EventEmitter<{ status: GameStatus; turn?: number }>();
   onCodeLengthChanged = new EventEmitter<CodeLength>();
+  onCanCheckChanged = new EventEmitter<boolean>();
 
   getSettings(): GameSettings {
     return {
@@ -74,6 +76,7 @@ export class GameService {
   startNewGame() {
     this.game = new GameModel(this.generateCode());
     this.code = this.game.code;
+    this.canCheck = false;
     this.selectedColor = this.availableColors[this.availableColors.length - 1];
     this.onNewGameStart.emit(this.game);
     this.onStatusChange.emit({ status: this.game.gameStatus });
@@ -91,7 +94,6 @@ export class GameService {
 
   finishGame(isWin: boolean) {
     this.game.gameStatus = isWin ? 'success' : 'fail';
-    console.log(this.game.currentTurn);
 
     this.onStatusChange.emit({
       status: this.game.gameStatus,
@@ -105,6 +107,8 @@ export class GameService {
 
   onColorGuess(index: number) {
     this.getActiveRow()[index] = this.selectedColor;
+    this.canCheck = true;
+    this.onCanCheckChanged.emit(this.canCheck);
   }
 
   onCheck() {
@@ -122,6 +126,7 @@ export class GameService {
         this.finishGame(false);
         return;
       }
+      this.canCheck = false;
       this.onTurnChange.emit(this.game);
     }
   }
