@@ -1,4 +1,4 @@
-import { ConfettiService } from './../confetti.service';
+import { ConfettiService } from '../../confetti.service';
 import { EventEmitter, Injectable } from '@angular/core';
 
 @Injectable()

@@ -1,5 +1,5 @@
 import { ConfettiService } from '../confetti.service';
-import { ModalService } from '../modal/modal.service';
+import { ModalService } from '../UI/modal/modal.service';
 import { GameStatus } from './game.model';
 import { GameService } from './game.service';
 import { Component, OnInit } from '@angular/core';
