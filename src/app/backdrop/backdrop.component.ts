@@ -17,8 +17,4 @@ export class BackdropComponent implements OnInit {
       this.isOpen = isOpen;
     });
   }
-
-  onCLick() {
-    this.modalService.closeModal();
-  }
 }

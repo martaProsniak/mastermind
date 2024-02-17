@@ -1,11 +1,11 @@
 <main class="my-10 lg:my-14 md:flex flex-wrap w-full justify-center gap-x-14">
-  <section class="flex flex-wrap flex-col justify-center">
+  <div class="flex flex-wrap flex-col justify-center gap-y-6 md:gap-y-14">
     <game-settings></game-settings>
     <available-colors></available-colors>
-  </section>
-  <section class="min-w-[340px]">
+  </div>
+  <div class="min-w-[340px] mt-6 md:mt-0">
     <game-board></game-board>
-  </section>
+  </div>
 </main>
 @if(gameStatus === 'success' || gameStatus === 'fail') {
 <modal>

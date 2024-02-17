@@ -1,5 +1,6 @@
 import { ConfettiService } from './../confetti.service';
 import { EventEmitter, Injectable } from '@angular/core';
+
 @Injectable()
 export class ModalService {
   isOpen = true;

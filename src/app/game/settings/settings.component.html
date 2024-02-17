@@ -1,12 +1,12 @@
-<div class="flex gap-2 mb-5 justify-center flex-wrap flex-col">
-  <button type="button" class="block px-6 py-2 rounded-md bg-slate-600 cursor-pointer" (click)="onStartNewGame()">Start new
+<section id="settings" title="Settings" class="flex gap-y-6 mb-5 justify-center flex-wrap flex-col w-[240px] mx-auto">
+  <button type="button" class="block px-6 py-4 rounded-md bg-gradient-to-br from-red-600 to-pink-500 text-zinc-100 font-bold cursor-pointer shadow-sm" title="Start new game" (click)="onStartNewGame()">Start new
     game</button>
-  <div class="block px-6 py-2 rounded-md bg-slate-600 cursor-pointer text-center">
-    <select id="codeLength" class="bg-slate-600"
+  <div class="block px-6 py-4 rounded-md bg-slate-700 text-center shadow-sm">
+    <select id="codeLength" class="bg-slate-700 cursor-pointer" name="change-turn" title="Change turn"
             (change)="onCodeLengthChange()" [(ngModel)]="currentCodeLength">
       <option *ngFor="let option of codeLengthOptions" [ngValue]="option">Code length: {{option}}</option>
     </select>
   </div>
-</div>
+</section>
 
 

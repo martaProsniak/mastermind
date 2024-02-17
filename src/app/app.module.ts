@@ -17,6 +17,7 @@ import { FormsModule } from '@angular/forms';
 import { BackdropComponent } from './backdrop/backdrop.component';
 import { ModalComponent } from './modal/modal.component';
 import { ModalService } from './modal/modal.service';
+import { ConfettiService } from './confetti.service';
 
 @NgModule({
   declarations: [
@@ -32,10 +33,10 @@ import { ModalService } from './modal/modal.service';
     EmptyRowComponent,
     HintRowComponent,
     BackdropComponent,
-    ModalComponent
+    ModalComponent,
   ],
   imports: [BrowserModule, FormsModule],
-  providers: [GameService, ModalService],
+  providers: [GameService, ModalService, ConfettiService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

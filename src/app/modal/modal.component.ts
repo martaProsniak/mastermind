@@ -9,6 +9,7 @@ import { ModalService } from './modal.service';
 export class ModalComponent {
   isOpen: boolean;
 
+
   constructor(private modalService: ModalService) {}
 
   ngOnInit(): void {

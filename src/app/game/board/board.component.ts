@@ -14,7 +14,8 @@ export class BoardComponent implements OnInit {
   rows: number[];
   hints: Array<Array<ColorModel>> = [];
   guesses: Array<Array<ColorModel>> = [];
-  activeRowIndex: number = 8;
+  activeRowIndex: number;
+  rowBgClass: string;
   code: ColorModel[];
   gameStatus: GameStatus;
   boardWidth: string;
