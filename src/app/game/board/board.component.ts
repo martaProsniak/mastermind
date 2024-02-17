@@ -32,7 +32,10 @@ export class BoardComponent implements OnInit {
     this.gameService.onStatusChange.subscribe(({ status }) => {
       this.gameStatus = status;
     });
-    this.gameService.startNewGame();
+
+    if (!this.gameService.getGame()) {
+      this.gameService.startNewGame();
+    } else this.redrawBoard(this.gameService.getGame());
   }
 
   redrawBoard(game: GameModel) {

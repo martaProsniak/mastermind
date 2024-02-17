@@ -6,14 +6,14 @@
           <game-header />
           <ul class="space-y-10 mb-10 mt-10 md:mt-0">
             @if(url !== '/game') {
-            <li><button type="button" class="block px-6 py-4 mx-auto rounded-md bg-gradient-to-r from-red-500 to-pink-500 text-zinc-200 font-bold cursor-pointer shadow-md w-[160px]">
-                <a routerLink="/game" class="block h-100 w-100">Play</a>
+            <li><button type="button" class="block mx-auto rounded-md bg-gradient-to-r from-red-500 to-pink-500 text-zinc-200 font-bold cursor-pointer shadow-md w-[160px]">
+                <a routerLink="/game" class="block px-6 py-4 h-100 w-100">Play</a>
               </button></li>
             }
             @if(url !== '/rules') {
               <li><button type="button"
-                  class="block px-6 py-4 mx-auto rounded-md bg-transparent bg-zinc-900 text-zinc-200 font-bold cursor-pointer shadow-md w-[160px]">
-                  <a routerLink="/rules" class="block h-100 w-100">Rules</a>
+                  class="block mx-auto rounded-md bg-transparent bg-zinc-900 text-zinc-200 font-bold cursor-pointer shadow-md w-[160px]">
+                  <a routerLink="/rules" class="block px-6 py-4 h-100 w-100">Rules</a>
                 </button></li>
             }
           </ul>
