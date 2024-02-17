@@ -2,8 +2,12 @@
 module.exports = {
   content: ["./src/**/*.{html,ts}"],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        fredoka: ["Fredoka", 'sans-serif'],
+      },
+    },
   },
   plugins: [],
-}
+};
 
