@@ -22,6 +22,9 @@ import { HomeComponent } from './home/home.component';
 import { RulesComponent } from './rules/rules.component';
 import { AppRoutingModule } from './app-routing.module';
 import { NavigationComponent } from './navigation/navigation.component';
+import { HintsComponent } from './rules/hints.component';
+import { InstructionsComponent } from './rules/instructions.component';
+import { FlowComponent } from './rules/flow.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +44,8 @@ import { NavigationComponent } from './navigation/navigation.component';
     HomeComponent,
     RulesComponent,
     NavigationComponent,
+    HintsComponent,
+    InstructionsComponent, FlowComponent
   ],
   imports: [BrowserModule, FormsModule, AppRoutingModule],
   providers: [GameService, ModalService, ConfettiService],

@@ -1,8 +1,9 @@
-import {Component} from "@angular/core";
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'game-rules',
-  templateUrl: './rules.component.html'
-
+  templateUrl: './rules.component.html',
 })
-export class RulesComponent {}
+export class RulesComponent {
+  routes: string[] = ['instructions', 'hints', 'flow'];
+}
