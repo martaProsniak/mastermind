@@ -1,4 +1,4 @@
-<div class="flex items-center justify-center">
+<div class="flex items-center justify-center min-w-[380px] w-full">
     <available-colors />
       <section id="game-board" title="Game board" class="bg-slate-700 rounded-lg py-6" [style.width]="boardWidth">
         <color-code [code]="game.code" [showCode]="gameStatus === 'success' || gameStatus === 'fail'"></color-code>
@@ -7,7 +7,7 @@
           <div *ngFor="let item of rows; let i = index" class="w-full flex gap-x-4 items-center">
             <empty-row [colors]="game.guesses[i]" [showPointer]="activeRowIndex === i" [onClick]="onColorGuess"></empty-row>
             @if (activeRowIndex !== i || game.gameStatus !== 'inProgress') {
-              <hint-row [colors]="game.hints[i]" [hintWidth]="game.code.length === 4 ? '40px' : '56px'"></hint-row>
+              <hint-row [colors]="game.hints[i]" [hintWidth]="game.code.length === 4 ? '40px' : '40px'"></hint-row>
             }
             @if(activeRowIndex === i && game.gameStatus === 'inProgress') {
               <button type="button" class="mx-auto block py-2 rounded-md shadow-sm text-zinc-100 text-md cursor-pointer underline underline-offset-4"

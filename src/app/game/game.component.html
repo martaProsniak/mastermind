@@ -1,16 +1,12 @@
-<main class="md:flex flex-wrap w-full justify-center gap-x-14 lg:gap-x-24 py-10 md:py-20">
+<main class="sm:flex flex-wrap w-full justify-center py-10 md:py-20 min-w-[420px]">
   <div class="flex flex-wrap flex-col gap-y-6 md:gap-y-14">
-    <game-header />
-    <game-settings></game-settings>
-  </div>
-  <div class="min-w-[340px] mt-6 md:mt-0">
     <game-board></game-board>
   </div>
 </main>
 @if(gameStatus === 'success' || gameStatus === 'fail') {
 <modal>
   <div
-    class="h-60 min-w-[280px] w-2/3 max-w-[500px] {{modalStyle}} text-zinc-800 text-center text-pretty shadom-md absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-md">
+    class="h-60 min-w-[280px] w-2/3 max-w-[500px] bg-zinc-300 text-zinc-800 border-4 border-zinc-900 text-center text-pretty shadom-md absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-md">
     <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80">
         @if(gameStatus === 'success') {
         <h4 class="text-xl font-bold mb-4">Congratulations!</h4>

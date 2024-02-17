@@ -74,7 +74,7 @@ export class GameService {
   startNewGame() {
     this.game = new GameModel(this.generateCode());
     this.code = this.game.code;
-    this.selectedColor = this.availableColors[0];
+    this.selectedColor = this.availableColors[this.availableColors.length - 1];
     this.onNewGameStart.emit(this.game);
     this.onStatusChange.emit({ status: this.game.gameStatus });
     this.onSelectedColorChange.emit(this.selectedColor);
@@ -93,7 +93,10 @@ export class GameService {
     this.game.gameStatus = isWin ? 'success' : 'fail';
     console.log(this.game.currentTurn);
 
-    this.onStatusChange.emit({ status: this.game.gameStatus, turn: this.game.currentTurn });
+    this.onStatusChange.emit({
+      status: this.game.gameStatus,
+      turn: this.game.currentTurn,
+    });
   }
 
   getActiveRow() {

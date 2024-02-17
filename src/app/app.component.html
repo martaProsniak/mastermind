@@ -1,6 +1,26 @@
-<div class=" min-h-screen bg-slate-800 text-neutral-100 font-fredoka">
-  <div class="max-w-[1280px] mx-auto w-10/12">
-    <router-outlet></router-outlet>
+<div class=" min-h-screen bg-slate-800 text-neutral-100 font-fredoka w-full">
+  <div class="max-w-[1280px] mx-auto">
+    <div class="w-full md:w-11/12 lg:w-9/12  mx-auto md:flex justify-center md:justify-between">
+      <div class="pt-10 md:pt-20">
+        <nav class=" mb-6 mx-auto">
+          <game-header />
+          <ul class="space-y-10 mb-10 mt-10 md:mt-0">
+            @if(url !== '/game') {
+            <li><button type="button" class="block px-6 py-4 mx-auto rounded-md bg-zinc-200 text-zinc-900 font-bold cursor-pointer shadow-sm w-[180px]">
+                <a routerLink="/game" class="block h-100 w-100">Play</a>
+              </button></li>
+            }
+            <li><button type="button" class="block px-6 py-4 mx-auto rounded-md bg-transparent border-2 border-zinc-100 text-zinc-100 font-bold cursor-pointer shadow-sm w-[180px]">
+                <a routerLink="/rules" class="block h-100 w-100">Rules</a>
+              </button></li>
+          </ul>
+        </nav>
+          @if(url === '/game') {
+          <game-settings />
+          }
+      </div>
+      <router-outlet></router-outlet>
+    </div>
   </div>
 </div>
 
