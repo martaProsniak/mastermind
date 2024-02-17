@@ -1,29 +1,10 @@
-<div class=" min-h-screen  text-neutral-100 font-fredoka w-fit mx-auto">
-  <div class="max-w-[1280px] min-h-[780px] md:absolute md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2">
-    <div class="w-full md:w-11/12 lg:w-9/12  mx-auto md:flex justify-center">
-      <div class="pt-10 md:pt-16">
-        <nav class=" mb-6 mx-auto">
-          <game-header />
-          <ul class="space-y-10 mb-10 mt-10 md:mt-0">
-            @if(url !== '/game') {
-            <li><button type="button" class="block mx-auto rounded-md bg-gradient-to-r from-cyan-500 to-lime-600 text-zinc-200 font-bold cursor-pointer shadow-md w-[160px]">
-                <a routerLink="/game" class="block px-6 py-4 h-100 w-100">Play</a>
-              </button></li>
-            }
-            @if(url !== '/rules') {
-              <li><button type="button"
-                  class="block mx-auto rounded-md bg-transparent bg-zinc-900 text-zinc-200 font-bold cursor-pointer shadow-md w-[160px]">
-                  <a routerLink="/rules" class="block px-6 py-4 h-100 w-100">Rules</a>
-                </button></li>
-            }
-          </ul>
-        </nav>
-          @if(url === '/game') {
-          <game-settings />
-          }
-      </div>
+<div class="min-h-screen text-neutral-100 font-fredoka w-fit mx-auto">
+  <div
+    class="max-w-[1280px] min-h-[780px] md:absolute md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2"
+  >
+    <div class="w-full md:w-11/12 lg:w-9/12 mx-auto md:flex justify-center">
+      <app-nav />
       <router-outlet></router-outlet>
     </div>
   </div>
-
-
+</div>

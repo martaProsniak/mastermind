@@ -18,9 +18,10 @@ import { BackdropComponent } from './UI/backdrop/backdrop.component';
 import { ModalComponent } from './UI/modal/modal.component';
 import { ModalService } from './UI/modal/modal.service';
 import { ConfettiService } from './confetti.service';
-import {HomeComponent} from "./home/home.component";
-import {RulesComponent} from "./rules/rules.component";
-import {AppRoutingModule} from "./app-routing.module";
+import { HomeComponent } from './home/home.component';
+import { RulesComponent } from './rules/rules.component';
+import { AppRoutingModule } from './app-routing.module';
+import { NavigationComponent } from './navigation/navigation.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,9 @@ import {AppRoutingModule} from "./app-routing.module";
     HintRowComponent,
     BackdropComponent,
     ModalComponent,
-    HomeComponent, RulesComponent
+    HomeComponent,
+    RulesComponent,
+    NavigationComponent,
   ],
   imports: [BrowserModule, FormsModule, AppRoutingModule],
   providers: [GameService, ModalService, ConfettiService],
