@@ -3,9 +3,9 @@
     <game-header />
     <ul class="mb-14 mt-14 flex gap-y-6 md:justify-center flex-wrap flex-row md:flex-col mx-auto max-w-[340px]">
       @if(url !== '/') {
-      <li class="mx-auto">
+      <li class="mx-auto ">
         <button type="button"
-          class="block rounded-md bg-transparent text-zinc-200 bg-lime-600 font-bold cursor-pointer shadow-md w-[160px]">
+          class="block rounded-md bg-lime-600 text-zinc-200 font-bold cursor-pointer shadow-md w-[160px]">
           <a routerLink="/" class="block px-6 py-4 h-100 w-100">About game</a>
         </button>
       </li>
@@ -19,7 +19,7 @@
       } @if(url !== '/rules') {
       <li class="mx-auto">
         <button type="button"
-          class="block rounded-md bg-transparent bg-sky-600 text-zinc-200 font-bold cursor-pointer shadow-md w-[160px]">
+          class="block rounded-md bg-sky-600 text-zinc-200 font-bold cursor-pointer shadow-md w-[160px]">
           <a routerLink="/rules" class="block px-6 py-4 h-100 w-100">Rules</a>
         </button>
       </li>
