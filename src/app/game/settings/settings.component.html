@@ -1,11 +1,19 @@
-<section id="settings" title="Settings" class="flex w-7/12 md:w-11/12 justify-between my-10 md:items-center flex-wrap flex-row md:flex-col mx-auto min-w-[340px] gap-x-2 md:gap-y-4">
-  <button type="button" class="block px-4 py-4 rounded-md bg-pink-300 text-zinc-900 border-pink-600 border-2 text-xl cursor-pointer shadow-sm w-[160px]" title="Start new game" (click)="onStartNewGame()">Restart</button>
-  <div class="px-4 py-4 rounded-md border-yellow-600 border-2 bg-yellow-300 text-zinc-900 text-center shadow-sm w-[160px]">
-    <select id="codeLength" class="cursor-pointer bg-yellow-300 text-zinc-900" name="change-turn" title="Change turn"
-            (change)="onCodeLengthChange()" [(ngModel)]="currentCodeLength">
-      <option *ngFor="let option of codeLengthOptions" [ngValue]="option">Code length: {{option}}</option>
-    </select>
-  </div>
+<section id="settings" title="Settings" class="">
+  <ul class="flex w-7/12 md:w-11/12 justify-center my-10 md:items-center flex-wrap flex-row md:flex-col gap-x-4 md:gap-y-4 mx-auto min-w-[340px]">
+    <li class="accent accent-pink"><button type="button"
+      class="block px-4 py-4 rounded-full  border-pink-600 border-2 text-xl cursor-pointer shadow-sm w-[160px]"
+      title="Start new game" (click)="onStartNewGame()">Restart</button></li>
+    <li class="accent accent-orange ">
+      <div class="px-4 py-4 rounded-full border-orange-600 border-2 text-center shadow-sm w-[160px] ">
+        <select id="codeLength" class="cursor-pointer bg-transparent" name="change-turn" title="Change turn"
+          (change)="onCodeLengthChange()" [(ngModel)]="currentCodeLength">
+          <option class="bg-zinc-800" *ngFor="let option of codeLengthOptions" [ngValue]="option">Code length: {{option}}</option>
+        </select>
+      </div>
+    </li>
+  </ul>
+
+
 </section>
 
 

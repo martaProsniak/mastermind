@@ -1,13 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  Router,
-  NavigationStart,
-} from '@angular/router';
+import { Router, NavigationStart } from '@angular/router';
 import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-nav',
   templateUrl: './navigation.component.html',
+  styleUrls: ['../UI/ui-classes.css'],
 })
 export class NavigationComponent implements OnInit {
   url: string;

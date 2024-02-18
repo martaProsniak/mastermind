@@ -4,7 +4,7 @@ import { CodeLength, GameService } from '../game.service';
 @Component({
   selector: 'game-settings',
   templateUrl: './settings.component.html',
-  styleUrl: './settings.component.css',
+  styleUrls: ['./settings.component.css', '../../UI/ui-classes.css'],
 })
 export class SettingsComponent implements OnInit {
   codeLengthOptions: CodeLength[] = [4, 5];
