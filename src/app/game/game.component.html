@@ -1,12 +1,12 @@
-<main class="sm:flex flex-wrap w-full justify-center min-w-[380px] {{codeLength === 4 ? 'scale-95 sm:scale-100' : 'scale-90 sm:scale-100'}}">
-  <div class="flex flex-wrap flex-col gap-y-6 md:gap-y-14">
+
+  <div class="mx-auto {{codeLength === 4 ? 'scale-95 sm:scale-100' : 'scale-90 sm:scale-100'}}">
     <game-board></game-board>
   </div>
-</main>
+
 @if(gameStatus === 'success' || gameStatus === 'fail') {
 <modal>
   <div
-    class="h-60 min-w-[280px] w-2/3 max-w-[500px] bg-zinc-300 text-zinc-800 border-4 border-zinc-900 text-center text-pretty shadom-md absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-md">
+    class="h-60 min-w-[280px] w-2/3 bg-zinc-300 text-zinc-800 border-4 border-zinc-900 text-center text-pretty shadom-md absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-md">
     <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80">
         @if(gameStatus === 'success') {
         <h4 class="text-xl font-bold mb-4">Congratulations!</h4>

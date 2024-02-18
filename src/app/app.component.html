@@ -1,10 +1,14 @@
 <div class="min-h-screen text-neutral-100 font-fredoka w-fit mx-auto">
   <div
-    class="max-w-[1280px] min-h-screen md:absolute md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2"
+    class="max-w-[1280px] min-h-screen"
   >
     <div class="w-full md:w-11/12 lg:w-9/12 mx-auto md:flex justify-center pt-10 md:pt-20">
       <app-nav />
-      <router-outlet></router-outlet>
+      <main class="w-full md:py-32 min-w-[380px] md:min-w-[420px]">
+        <div class="w-1/2 md:w-11/12 mx-auto space-y-4 min-w-[300px]">
+        <router-outlet></router-outlet>
+      </div>
+      </main>
     </div>
   </div>
 </div>

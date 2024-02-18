@@ -8,8 +8,8 @@ import { HintsComponent } from './rules/hints.component';
 import { FlowComponent } from './rules/flow.component';
 
 const appRoutes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'game', component: GameComponent },
+  { path: '', component: GameComponent },
+  { path: 'about', component: HomeComponent },
   {
     path: 'rules',
     component: RulesComponent,
