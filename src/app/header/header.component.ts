@@ -3,8 +3,6 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'game-header',
   templateUrl: './header.component.html',
-  styleUrl: './header.component.css'
+  styleUrls: ['./header.component.css', '../UI/ui-classes.css'],
 })
-export class HeaderComponent {
-
-}
+export class HeaderComponent {}

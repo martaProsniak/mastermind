@@ -45,7 +45,8 @@ import { FlowComponent } from './rules/flow.component';
     RulesComponent,
     NavigationComponent,
     HintsComponent,
-    InstructionsComponent, FlowComponent
+    InstructionsComponent,
+    FlowComponent,
   ],
   imports: [BrowserModule, FormsModule, AppRoutingModule],
   providers: [GameService, ModalService, ConfettiService],
