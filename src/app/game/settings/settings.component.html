@@ -1,13 +1,13 @@
 <section id="settings" title="Settings" class="">
   <ul class="flex w-7/12 md:w-11/12 justify-center my-10 md:items-center flex-wrap flex-row md:flex-col gap-x-4 md:gap-y-4 mx-auto min-w-[340px]">
-    <li class="accent accent-pink"><button type="button"
-      class="block px-4 py-4 rounded-full  border-pink-600 border-2 text-xl cursor-pointer shadow-sm w-[160px] transition-colors duration-300 hover:bg-pink-600"
+    <li class="accent hover:accent-pink"><button type="button"
+      class="block px-4 py-4 rounded-full  border-pink-700 border-2 text-xl cursor-pointer shadow-sm w-[160px]"
       title="Start new game" (click)="onStartNewGame()">New game</button></li>
-    <li class="accent accent-orange ">
-      <div class="px-4 py-4 rounded-full border-orange-600 border-2 text-center shadow-sm w-[160px] transition-colors duration-300 hover:bg-orange-600">
+    <li class="accent hover:accent-orange ">
+      <div class="px-4 py-4 rounded-full border-orange-700 border-2 text-center shadow-sm w-[160px]">
         <select id="codeLength" class="cursor-pointer bg-transparent" name="change-turn" title="Change turn"
           (change)="onCodeLengthChange()" [(ngModel)]="currentCodeLength">
-          <option class="bg-orange-600" *ngFor="let option of codeLengthOptions" [ngValue]="option">Code length: {{option}}</option>
+          <option class="bg-orange-700" *ngFor="let option of codeLengthOptions" [ngValue]="option">Code length: {{option}}</option>
         </select>
       </div>
     </li>

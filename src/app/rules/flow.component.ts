@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   selector: 'rules-flow',
   template: `
     <section class="space-y-4">
-      <h3 class="text-xl">Game flow</h3>
+      <h3 class="text-xl accent accent-pink accent-top">Game flow</h3>
       <article>
         <p>
           You have ten tur to guess the sequence. Try different colors, observe

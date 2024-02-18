@@ -3,24 +3,24 @@
     <game-header />
     <ul class="mt-14 flex w-7/12 md:w-11/12 justify-center flex-wrap flex-row md:flex-col md:items-center mx-auto min-w-[340px] gap-x-4 md:gap-y-4">
       @if(url !== '/') {
-      <li class="accent accent-pink">
+      <li class="accent hover:accent-pink">
         <button type="button"
-          class="block rounded-full border-2 border-pink-600 text-xl cursor-pointer shadow-md w-[160px] transition-colors duration-300 hover:bg-pink-600">
+          class="block rounded-full border-2 border-pink-700 text-xl cursor-pointer shadow-md w-[160px]">
           <a routerLink="/" class="block px-6 py-4 h-100 w-100 ">Play</a>
         </button>
       </li>
       }
       @if(url !== '/about') {
-      <li class="accent accent-green">
+      <li class="accent hover:accent-green">
         <button type="button"
-          class="block rounded-full border-2 border-lime-600 text-xl cursor-pointer shadow-md w-[160px] transition-colors duration-300 hover:bg-lime-600">
+          class="block rounded-full border-2 border-green-700 text-xl cursor-pointer shadow-md w-[160px]">
           <a routerLink="/about" class="block px-6 py-4 h-100 w-100">About</a>
         </button>
       </li>
       }@if(!url?.includes('/rules')) {
-      <li class="accent accent-sky">
+      <li class="accent hover:accent-sky">
         <button type="button"
-          class="block rounded-full border-2 border-sky-600 text-xl cursor-pointer shadow-md w-[160px] transition-colors duration-300 hover:bg-sky-600">
+          class="block rounded-full border-2 border-sky-700 text-xl cursor-pointer shadow-md w-[160px]">
           <a routerLink="/rules" class="block px-6 py-4 h-100 w-100">Rules</a>
         </button>
       </li>
