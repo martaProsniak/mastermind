@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   selector: 'rules-instructions',
   template: `
     <section class="space-y-3">
-      <h3 class="text-xl accent accent-pink accent-top">Game instructions</h3>
+      <h3 class="text-xl accent accent-orange accent-top">Game instructions</h3>
       <article class="space-y-2">
         <p>
           The game board consists of 10 rows, in which you can place your

@@ -6,7 +6,7 @@
   </article>
 </section>
 <ul class="flex">
-  <li class="mr-2" *ngFor="let route of routes; let i = index"><a [routerLink]="['/rules/', route]" class="hover:text-sky-400 transition-colors duration-150" routerLinkActive="text-pink-400">{{route.toUpperCase()}}</a>
+  <li class="mr-2" *ngFor="let route of routes; let i = index"><a [routerLink]="['/rules/', route]" class="hover:accent hover:accent-sky hover:accent-top" routerLinkActive="accent accent-pink accent-top">{{route.toUpperCase()}}</a>
   <span class="mx-1 {{i === (routes.length - 1) ? 'hidden' : ''}}">/</span></li>
 </ul>
 <div>
