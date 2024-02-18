@@ -5,7 +5,7 @@
       @if(url !== '/') {
       <li class="accent accent-pink">
         <button type="button"
-          class="block rounded-full border-2 border-pink-500 text-xl cursor-pointer shadow-md w-[160px] ">
+          class="block rounded-full border-2 border-pink-600 text-xl cursor-pointer shadow-md w-[160px] transition-colors duration-300 hover:bg-pink-600">
           <a routerLink="/" class="block px-6 py-4 h-100 w-100 ">Play</a>
         </button>
       </li>
@@ -13,14 +13,14 @@
       @if(url !== '/about') {
       <li class="accent accent-green">
         <button type="button"
-          class="block rounded-full border-2 border-lime-500  text-xl cursor-pointer shadow-md w-[160px]">
+          class="block rounded-full border-2 border-lime-600 text-xl cursor-pointer shadow-md w-[160px] transition-colors duration-300 hover:bg-lime-600">
           <a routerLink="/about" class="block px-6 py-4 h-100 w-100">About</a>
         </button>
       </li>
       }@if(!url?.includes('/rules')) {
       <li class="accent accent-sky">
         <button type="button"
-          class="block rounded-full border-2 border-sky-600  text-xl cursor-pointer shadow-md w-[160px]">
+          class="block rounded-full border-2 border-sky-600 text-xl cursor-pointer shadow-md w-[160px] transition-colors duration-300 hover:bg-sky-600">
           <a routerLink="/rules" class="block px-6 py-4 h-100 w-100">Rules</a>
         </button>
       </li>

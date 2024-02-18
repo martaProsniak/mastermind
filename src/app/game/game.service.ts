@@ -10,7 +10,7 @@ const colors: ColorModel[] = [
   new ColorModel('pink', '#eb1ed3'),
   new ColorModel('orange', '#e86807'),
   new ColorModel('yellow', '#ebbe1e'),
-  new ColorModel('cream', '#ebe6e6'),
+  new ColorModel('cream', '#fff'),
 ];
 
 interface GameSettings {
