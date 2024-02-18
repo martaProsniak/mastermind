@@ -27,19 +27,19 @@ body {
   }
 
   .accent-sky::before {
-    background-color: #0369a1;
+    background-color: #0284c7;
   }
 
   .accent-pink::before {
-    background-color: #be185d;
+    background-color: #db2777;
   }
 
   .accent-green::before {
-    background-color: #15803d;
+    background-color: #16a34a;
   }
 
   .accent-orange::before {
-    background-color: #c2410c;
+    background-color: #ea580c;
   }
 
   .accent-top::before {
@@ -52,8 +52,8 @@ body {
   }
 
   .accent-small::before {
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 25px;
   }
 
 }

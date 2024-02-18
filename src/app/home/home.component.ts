@@ -5,4 +5,6 @@ import { Component } from '@angular/core';
   templateUrl: './home.component.html',
   styleUrl: '../UI/ui-classes.css',
 })
-export class HomeComponent {}
+export class HomeComponent {
+  routes: string[] = ['gameplay', 'history'];
+}

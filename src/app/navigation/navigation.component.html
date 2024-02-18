@@ -1,30 +1,27 @@
 <div class="mt-14 md:mt-32 min-w-[340px]">
   <nav>
     <game-header />
-    <ul class="mt-14 flex w-7/12 md:w-11/12 justify-center flex-wrap flex-row md:flex-col md:items-center mx-auto min-w-[340px] gap-x-4 md:gap-y-4">
-      @if(url !== '/') {
-      <li class="accent hover:accent-pink">
-        <button type="button"
-          class="block rounded-full border-2 border-pink-700 text-xl cursor-pointer shadow-md w-[160px]">
-          <a routerLink="/" class="block px-6 py-4 h-100 w-100 ">Play</a>
-        </button>
-      </li>
-      }
-      @if(url !== '/about') {
-      <li class="accent hover:accent-green">
-        <button type="button"
-          class="block rounded-full border-2 border-green-700 text-xl cursor-pointer shadow-md w-[160px]">
-          <a routerLink="/about" class="block px-6 py-4 h-100 w-100">About</a>
-        </button>
-      </li>
-      }@if(!url?.includes('/rules')) {
+    <ul class="mt-14 flex w-full md:w-11/12 justify-center flex-wrap flex-row md:flex-col md:items-center mx-auto min-w-[340px] gap-x-2 gap-y-3 md:gap-y-6">
       <li class="accent hover:accent-sky">
         <button type="button"
-          class="block rounded-full border-2 border-sky-700 text-xl cursor-pointer shadow-md w-[160px]">
-          <a routerLink="/rules" class="block px-6 py-4 h-100 w-100">Rules</a>
+          class="block rounded-full border-2 border-sky-600 text-xl cursor-pointer shadow-md w-[120px] md:w-[160px] transition-colors duration-300" [routerLinkActive]="'bg-sky-600 hover:bg-sky-500'">
+          <a routerLink="/about" class="block p-4 h-100 w-100">About</a>
         </button>
       </li>
-      }
+      <li class="accent hover:accent-green">
+        <button type="button"
+          class="block rounded-full border-2 border-green-600 text-xl cursor-pointer shadow-md w-[120px] md:w-[160px] transition-colors duration-300" [routerLinkActive]="'bg-green-600 hover:bg-green-500'">
+          <a routerLink="/rules" class="block p-4 h-100 w-100">Rules</a>
+        </button>
+      </li>
+        @if(url !== '/') {
+        <li class="accent hover:accent-pink">
+          <button type="button"
+            class="block rounded-full border-2 border-pink-600 text-xl cursor-pointer shadow-md w-[120px] md:w-[160px] transition-colors duration-300">
+            <a routerLink="/" class="block p-4 h-100 w-100 ">Play</a>
+          </button>
+        </li>
+        }
     </ul>
   </nav>
   @if(url === '/') {

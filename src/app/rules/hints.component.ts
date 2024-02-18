@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   selector: 'rules-hints',
   template: `
     <section class="space-y-3">
-      <h3 class="text-xl accent accent-orange accent-top">Hints</h3>
+      <h3 class="text-xl text-green-500">Hints</h3>
       <article class="space-y-2">
         <p>
           After click, the smaller circles with hints will appear. Here's their

@@ -5,5 +5,5 @@ import { Component } from '@angular/core';
   templateUrl: './rules.component.html',
 })
 export class RulesComponent {
-  routes: string[] = ['instructions', 'hints', 'flow'];
+  routes: string[] = ['board', 'hints', 'flow'];
 }

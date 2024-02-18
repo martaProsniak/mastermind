@@ -25,6 +25,8 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { HintsComponent } from './rules/hints.component';
 import { InstructionsComponent } from './rules/instructions.component';
 import { FlowComponent } from './rules/flow.component';
+import { GameHistoryComponent } from './home/history.component';
+import { GameplayComponent } from './home/gameplay.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +49,8 @@ import { FlowComponent } from './rules/flow.component';
     HintsComponent,
     InstructionsComponent,
     FlowComponent,
+    GameHistoryComponent,
+    GameplayComponent,
   ],
   imports: [BrowserModule, FormsModule, AppRoutingModule],
   providers: [GameService, ModalService, ConfettiService],
