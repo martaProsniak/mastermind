@@ -3,7 +3,7 @@ import { EventEmitter, Injectable } from '@angular/core';
 
 @Injectable()
 export class ModalService {
-  isOpen = true;
+  isOpen = false;
   onModalChange = new EventEmitter<boolean>();
 
   constructor(private confettiService: ConfettiService) {}

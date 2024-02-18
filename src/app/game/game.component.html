@@ -3,10 +3,10 @@
     <game-board></game-board>
   </div>
 
-@if(gameStatus === 'success' || gameStatus === 'fail') {
+<!-- @if(gameStatus === 'success' || gameStatus === 'fail') { -->
 <modal>
   <div
-    class="h-60 min-w-[280px] w-2/3 bg-zinc-300 text-zinc-800 border-4 border-zinc-900 text-center text-pretty shadom-md absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-md">
+    class="h-52 md:h-72 min-w-[300px] max-w-[520px] w-2/3 bg-zinc-300 text-zinc-800 border-4 border-sky-500 text-center text-pretty shadom-md absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-md">
     <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80">
         @if(gameStatus === 'success') {
         <h4 class="text-xl font-bold mb-4">Congratulations!</h4>
@@ -19,5 +19,5 @@
     </div>
   </div>
 </modal>
-}
+<!-- } -->
 

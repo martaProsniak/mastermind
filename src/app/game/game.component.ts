@@ -24,6 +24,7 @@ export class GameComponent implements OnInit {
     if (!this.gameService.getGame()) {
       this.gameService.startNewGame();
     }
+    this.modalService.openModal();
 
     this.codeLength = this.gameService.getCode().length;
     console.log(this.codeLength);
