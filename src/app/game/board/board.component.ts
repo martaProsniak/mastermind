@@ -58,7 +58,7 @@ export class BoardComponent implements OnInit, OnDestroy {
     this.rowsCount = this.game.maxTurn;
     this.rows = Array.from(Array(this.rowsCount).keys());
     this.activeRowIndex = this.gameService.getActiveRowIndex();
-    this.boardWidth = this.game.code.length === 4 ? 'w-[270px]' : 'w-[320px]';
+    this.boardWidth = this.game.code.length === 4 ? 'w-[280px]' : 'w-[340px]';
     this.canCheck = this.gameService.canCheck;
   }
 
