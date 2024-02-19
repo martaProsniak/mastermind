@@ -1,42 +1,56 @@
-import { Component, OnChanges, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import { GameService } from '../game.service';
 import { GameModel, GameStatus } from '../game.model';
 import { ColorModel } from '../color.model';
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'game-board',
   templateUrl: './board.component.html',
   styleUrl: './board.component.css',
 })
-export class BoardComponent implements OnInit {
+export class BoardComponent implements OnInit, OnDestroy {
   game: GameModel;
   rowsCount: number;
   rows: number[];
   hints: Array<Array<ColorModel>> = [];
-  guesses: Array<Array<ColorModel>> = [];
   activeRowIndex: number;
-  rowBgClass: string;
   code: ColorModel[];
   gameStatus: GameStatus;
   boardWidth: string;
   canCheck: boolean = false;
+  newGameStartSubscription: Subscription;
+  turnChangedSubscription: Subscription;
+  statusChangedSubscription: Subscription;
+  canCheckChangedSubscription: Subscription;
 
   constructor(private gameService: GameService) {}
 
   ngOnInit(): void {
-    this.gameService.onNewGameStart.subscribe((game: GameModel) => {
+    this.subscribeGameServiceObservables();
+    this.renderBoard(this.gameService.getGame());
+  }
+
+  subscribeGameServiceObservables() {
+    this.newGameStartSubscription = this.gameService.onNewGameStart.subscribe((game: GameModel) => {
       this.renderBoard(game);
     });
-    this.gameService.onTurnChange.subscribe((game: GameModel) =>
+    this.turnChangedSubscription = this.gameService.onTurnChange.subscribe((game: GameModel) =>
       this.renderBoard(game)
     );
-    this.gameService.onStatusChange.subscribe(({ status }) => {
+    this.statusChangedSubscription = this.gameService.onStatusChange.subscribe(({ status }) => {
       this.gameStatus = status;
     });
-    this.gameService.onCanCheckChanged.subscribe((canCheck) => {
+    this.canCheckChangedSubscription = this.gameService.onCanCheckChanged.subscribe((canCheck) => {
       this.canCheck = canCheck;
     });
-    this.renderBoard(this.gameService.getGame());
+  }
+
+  unsubscribeGameServiceObservables() {
+    this.newGameStartSubscription.unsubscribe();
+    this.turnChangedSubscription.unsubscribe();
+    this.statusChangedSubscription.unsubscribe();
+    this.canCheckChangedSubscription.unsubscribe();
   }
 
   renderBoard(game: GameModel) {
@@ -58,5 +72,9 @@ export class BoardComponent implements OnInit {
     if (this.game.gameStatus === 'inProgress') {
       this.gameService.onCheck();
     }
+  }
+
+  ngOnDestroy() {
+    this.unsubscribeGameServiceObservables()
   }
 }

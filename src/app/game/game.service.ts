@@ -1,6 +1,6 @@
-import { EventEmitter } from '@angular/core';
 import { ColorModel } from './color.model';
 import { GameModel, GameStatus } from './game.model';
+import {Subject} from "rxjs";
 
 const colors: ColorModel[] = [
   new ColorModel('blue', '#1e25eb'),
@@ -26,12 +26,12 @@ export class GameService {
   private codeLength: CodeLength = 4;
   canCheck = false;
   selectedColor: ColorModel;
-  onSelectedColorChange = new EventEmitter<ColorModel>();
-  onNewGameStart = new EventEmitter<GameModel>();
-  onTurnChange = new EventEmitter<GameModel>();
-  onStatusChange = new EventEmitter<{ status: GameStatus; turn?: number }>();
-  onCodeLengthChanged = new EventEmitter<CodeLength>();
-  onCanCheckChanged = new EventEmitter<boolean>();
+  onSelectedColorChange = new Subject<ColorModel>();
+  onNewGameStart = new Subject<GameModel>();
+  onTurnChange = new Subject<GameModel>();
+  onStatusChange = new Subject<{ status: GameStatus; turn?: number }>();
+  onCodeLengthChanged = new Subject<CodeLength>();
+  onCanCheckChanged = new Subject<boolean>();
 
   getSettings(): GameSettings {
     return {
@@ -61,7 +61,7 @@ export class GameService {
 
   changeCodeLength(newLength: CodeLength) {
     this.codeLength = newLength;
-    this.onCodeLengthChanged.emit(this.codeLength);
+    this.onCodeLengthChanged.next(this.codeLength);
     this.startNewGame();
   }
 
@@ -78,14 +78,14 @@ export class GameService {
     this.code = this.game.code;
     this.canCheck = false;
     this.selectedColor = this.availableColors[this.availableColors.length - 1];
-    this.onNewGameStart.emit(this.game);
-    this.onStatusChange.emit({ status: this.game.gameStatus });
-    this.onSelectedColorChange.emit(this.selectedColor);
+    this.onNewGameStart.next(this.game);
+    this.onStatusChange.next({ status: this.game.gameStatus });
+    this.onSelectedColorChange.next(this.selectedColor);
   }
 
   changeSelectedColor(color: ColorModel) {
     this.selectedColor = color;
-    this.onSelectedColorChange.emit(this.selectedColor);
+    this.onSelectedColorChange.next(this.selectedColor);
   }
 
   getActiveRowIndex() {
@@ -95,7 +95,7 @@ export class GameService {
   finishGame(isWin: boolean) {
     this.game.gameStatus = isWin ? 'success' : 'fail';
 
-    this.onStatusChange.emit({
+    this.onStatusChange.next({
       status: this.game.gameStatus,
       turn: this.game.currentTurn,
     });
@@ -108,7 +108,7 @@ export class GameService {
   onColorGuess(index: number) {
     this.getActiveRow()[index] = this.selectedColor;
     this.canCheck = true;
-    this.onCanCheckChanged.emit(this.canCheck);
+    this.onCanCheckChanged.next(this.canCheck);
   }
 
   onCheck() {
@@ -127,7 +127,7 @@ export class GameService {
         return;
       }
       this.canCheck = false;
-      this.onTurnChange.emit(this.game);
+      this.onTurnChange.next(this.game);
     }
   }
 

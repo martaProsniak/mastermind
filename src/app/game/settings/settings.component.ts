@@ -21,7 +21,6 @@ export class SettingsComponent implements OnInit {
   }
 
   onCodeLengthChange() {
-    console.log(this.currentCodeLength);
     this.gameService.changeCodeLength(this.currentCodeLength);
   }
 }

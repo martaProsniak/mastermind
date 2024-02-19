@@ -1,21 +1,22 @@
 import { ConfettiService } from '../../confetti.service';
-import { EventEmitter, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
+import {Subject} from "rxjs";
 
 @Injectable()
 export class ModalService {
   isOpen = false;
-  onModalChange = new EventEmitter<boolean>();
+  onModalChange = new Subject<boolean>();
 
   constructor(private confettiService: ConfettiService) {}
 
   openModal() {
     this.isOpen = true;
-    this.onModalChange.emit(this.isOpen);
+    this.onModalChange.next(this.isOpen);
   }
 
   closeModal() {
     this.isOpen = false;
-    this.onModalChange.emit(this.isOpen);
+    this.onModalChange.next(this.isOpen);
     this.confettiService.clear();
   }
 }

@@ -13,5 +13,4 @@ export class ColorDotComponent {
   @Input() isSmall: boolean = false;
   @Input() moreInRow = false;
   @Input() showPointer: boolean = true;
-  animateClass: string;
 }
