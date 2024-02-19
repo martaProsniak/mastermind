@@ -51,10 +51,6 @@ export class GameService {
     return this.game;
   }
 
-  getCurrentTurn() {
-    return this.game.currentTurn;
-  }
-
   getRandomIndex(max: number = 8) {
     return Math.floor(Math.random() * max);
   }

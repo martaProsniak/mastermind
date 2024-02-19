@@ -11,5 +11,4 @@ import { ColorModel } from '../color.model';
 })
 export class HintRowComponent {
   @Input() colors: ColorModel[];
-  @Input() hintWidth: string;
 }
