@@ -9,9 +9,9 @@
       </p>
     </article>
   </section>
-<ul class="flex">
+<ul class="flex text-lg">
   <li class="mr-2" *ngFor="let route of routes; let i = index"><a [routerLink]="['/about/', route]"
-      class="transition-colors duration-300" routerLinkActive="text-sky-300">{{route.toUpperCase()}}</a>
+     routerLinkActive="underline underline-offset-4">{{route.toUpperCase()}}</a>
     <span class="mx-1 {{i === (routes.length - 1) ? 'hidden' : ''}}">/</span>
   </li>
 </ul>

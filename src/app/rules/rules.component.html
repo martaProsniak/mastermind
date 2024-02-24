@@ -5,8 +5,8 @@
   <article>The game's goal is to guess a sequence of several colors. Every color can appear in sequence more than once.
   </article>
 </section>
-<ul class="flex">
-  <li class="mr-2" *ngFor="let route of routes; let i = index"><a [routerLink]="['/rules/', route]" class="transition-colors duration-300" routerLinkActive="text-green-300">{{route.toUpperCase()}}</a>
+<ul class="flex text-lg">
+  <li class="mr-2" *ngFor="let route of routes; let i = index"><a [routerLink]="['/rules/', route]" routerLinkActive="underline underline-offset-4">{{route.toUpperCase()}}</a>
   <span class="mx-1 {{i === (routes.length - 1) ? 'hidden' : ''}}">/</span></li>
 </ul>
 <div>
