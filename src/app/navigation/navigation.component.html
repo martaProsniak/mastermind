@@ -1,22 +1,22 @@
 <div class="mt-14 md:mt-32 min-w-[340px] mb-8">
   <nav>
     <game-header />
-    <ul class="flex justify-center flex-wrap flex-row md:flex-col md:items-center mx-auto w-[340px] gap-x-4 gap-y-6 md:gap-y-6 mt-14 md:mt-20 mb-6">
+    <ul class="flex justify-center flex-wrap flex-row md:flex-col md:items-center mx-auto w-[340px] gap-x-4 gap-y-6 md:gap-y-6 mt-14 md:mt-20 mb-6 text-lg md:text-xl">
       <li class="accent hover:accent-sky">
         <button type="button"
-          class="block rounded-full border-2 border-sky-600 text-xl cursor-pointer shadow-md w-[160px] transition-colors duration-300" [routerLinkActive]="'bg-sky-600 hover:bg-sky-500'">
+          class="block rounded-full border-2 border-sky-600 cursor-pointer shadow-md w-[160px] transition-colors duration-300" [routerLinkActive]="'bg-sky-600 hover:bg-sky-500'">
           <a routerLink="/about" class="block p-4 h-100 w-100">About</a>
         </button>
       </li>
       <li class="accent hover:accent-green">
         <button type="button"
-          class="block rounded-full border-2 border-green-600 text-xl cursor-pointer shadow-md w-[160px] transition-colors duration-300" [routerLinkActive]="'bg-green-600 hover:bg-green-500'">
+          class="block rounded-full border-2 border-green-600 cursor-pointer shadow-md w-[160px] transition-colors duration-300" [routerLinkActive]="'bg-green-600 hover:bg-green-500'">
           <a routerLink="/rules" class="block p-4 h-100 w-100">Rules</a>
         </button>
       </li>
         <li *ngIf="url !== '/'" class="accent hover:accent-pink">
           <button type="button"
-            class="block rounded-full border-2 border-pink-600 text-xl cursor-pointer shadow-md w-[160px] transition-colors duration-300">
+            class="block rounded-full border-2 border-pink-600 cursor-pointer shadow-md w-[160px] transition-colors duration-300">
             <a routerLink="/" class="block p-4 h-100 w-100 ">Play</a>
           </button>
         </li>

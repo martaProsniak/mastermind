@@ -10,10 +10,12 @@ import { Component } from '@angular/core';
           After click, the smaller circles with hints will appear. Here's their
           color coding:
         </p>
-        <ul class="">
-          <li>Black - color is in sequence in the same position</li>
-          <li>White - color is in sequence, but on the other position</li>
-          <li>Grey - the sequence doesn't include this color</li>
+        <ul class="pl-2">
+          <li>&#x2022; Black - color is in sequence in the same position</li>
+          <li>
+            &#x2022; White - color is in sequence, but on the other position
+          </li>
+          <li>&#x2022; Gray - the sequence doesn't include this color</li>
         </ul>
         <p>
           After displaying turn results, the next row on the board becomes

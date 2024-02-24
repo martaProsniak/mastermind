@@ -1,6 +1,6 @@
 import { ColorModel } from './color.model';
 import { GameModel, GameStatus } from './game.model';
-import {Subject} from "rxjs";
+import { Subject } from 'rxjs';
 
 const colors: ColorModel[] = [
   new ColorModel('blue', '#1e25eb'),
@@ -90,7 +90,8 @@ export class GameService {
 
   finishGame(isWin: boolean) {
     this.game.gameStatus = isWin ? 'success' : 'fail';
-
+    this.selectedColor = null;
+    this.onSelectedColorChange.next(this.selectedColor);
     this.onStatusChange.next({
       status: this.game.gameStatus,
       turn: this.game.currentTurn,
