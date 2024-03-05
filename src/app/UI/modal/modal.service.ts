@@ -2,7 +2,9 @@ import { ConfettiService } from '../../confetti.service';
 import { Injectable } from '@angular/core';
 import {Subject} from "rxjs";
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class ModalService {
   isOpen = false;
   onModalChange = new Subject<boolean>();

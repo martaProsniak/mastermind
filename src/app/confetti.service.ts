@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import JSConfetti from 'js-confetti';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class ConfettiService {
   confetti: any;
 

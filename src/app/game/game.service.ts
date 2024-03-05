@@ -1,6 +1,7 @@
 import { ColorModel } from './color.model';
 import { GameModel, GameStatus } from './game.model';
 import { Subject } from 'rxjs';
+import {Injectable} from "@angular/core";
 
 const colors: ColorModel[] = [
   new ColorModel('blue', '#1e25eb'),
@@ -19,6 +20,9 @@ interface GameSettings {
 
 export type CodeLength = 4 | 5;
 
+@Injectable({
+  providedIn: 'root'
+})
 export class GameService {
   private game: GameModel;
   private availableColors: ColorModel[] = colors;
