@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'game-history',
-  template: `
+    selector: 'game-history',
+    template: `
     <section class="space-y-3">
       <h3 class="text-xl accent text-sky-500">Invented over 50 years ago</h3>
       <article class="space-y-2">
@@ -28,5 +28,6 @@ import { Component } from '@angular/core';
       </p>
     </section>
   `,
+    standalone: true,
 })
 export class GameHistoryComponent {}

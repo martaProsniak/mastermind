@@ -1,11 +1,22 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, NavigationStart } from '@angular/router';
+import { Router, NavigationStart, RouterLinkActive, RouterLink } from '@angular/router';
 import { filter } from 'rxjs/operators';
+import { SettingsComponent } from '../game/settings/settings.component';
+import { NgIf } from '@angular/common';
+import { HeaderComponent } from '../header/header.component';
 
 @Component({
-  selector: 'app-nav',
-  templateUrl: './navigation.component.html',
-  styleUrls: ['../UI/ui-classes.css'],
+    selector: 'app-nav',
+    templateUrl: './navigation.component.html',
+    styleUrls: ['../UI/ui-classes.css'],
+    standalone: true,
+    imports: [
+        HeaderComponent,
+        RouterLinkActive,
+        RouterLink,
+        NgIf,
+        SettingsComponent,
+    ],
 })
 export class NavigationComponent implements OnInit {
   url: string;

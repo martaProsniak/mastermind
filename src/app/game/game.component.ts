@@ -4,11 +4,15 @@ import { GameStatus } from './game.model';
 import { GameService } from './game.service';
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Subscription} from "rxjs";
+import { ModalComponent } from '../UI/modal/modal.component';
+import { BoardComponent } from './board/board.component';
 
 @Component({
-  selector: 'game',
-  templateUrl: './game.component.html',
-  styleUrl: './game.component.css',
+    selector: 'game',
+    templateUrl: './game.component.html',
+    styleUrl: './game.component.css',
+    standalone: true,
+    imports: [BoardComponent, ModalComponent],
 })
 export class GameComponent implements OnInit, OnDestroy {
   gameStatus: GameStatus;

@@ -1,10 +1,14 @@
 import { Component, Input } from '@angular/core';
 import { ColorModel } from '../color.model';
+import { ColorDotComponent } from '../color-dot/color-dot.component';
+import { NgFor } from '@angular/common';
 
 @Component({
-  selector: 'empty-row',
-  templateUrl: './empty-row.component.html',
-  styleUrl: './empty-row.component.css',
+    selector: 'empty-row',
+    templateUrl: './empty-row.component.html',
+    styleUrl: './empty-row.component.css',
+    standalone: true,
+    imports: [NgFor, ColorDotComponent],
 })
 export class EmptyRowComponent {
   @Input() colors: ColorModel[];

@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'rules-hints',
-  template: `
+    selector: 'rules-hints',
+    template: `
     <section class="space-y-3">
       <h3 class="text-xl text-green-500">Hints</h3>
       <article class="space-y-2">
@@ -24,5 +24,6 @@ import { Component } from '@angular/core';
       </article>
     </section>
   `,
+    standalone: true,
 })
 export class HintsComponent {}

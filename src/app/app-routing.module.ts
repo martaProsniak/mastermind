@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import {PreloadAllModules, RouterModule, Routes} from '@angular/router';
 import { GameComponent } from './game/game.component';
-import { HomeComponent } from './home/home.component';
-import { RulesComponent } from './rules/rules.component';
 import { InstructionsComponent } from './rules/instructions.component';
 import { HintsComponent } from './rules/hints.component';
 import { FlowComponent } from './rules/flow.component';
@@ -13,7 +11,7 @@ const appRoutes: Routes = [
   { path: '', component: GameComponent },
   {
     path: 'about',
-    component: HomeComponent,
+    loadComponent: () => import('./home/home.component').then((m) => m.HomeComponent),
     children: [
       { path: 'gameplay', component: GameplayComponent },
       { path: 'history', component: GameHistoryComponent },
@@ -22,7 +20,7 @@ const appRoutes: Routes = [
   },
   {
     path: 'rules',
-    component: RulesComponent,
+    loadComponent: () => import('./rules/rules.component').then((m) => m.RulesComponent),
     children: [
       { path: 'board', component: InstructionsComponent },
       { path: 'hints', component: HintsComponent },
@@ -34,7 +32,7 @@ const appRoutes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(appRoutes)],
+  imports: [RouterModule.forRoot(appRoutes, {preloadingStrategy: PreloadAllModules})],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

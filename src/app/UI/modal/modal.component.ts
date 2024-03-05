@@ -1,11 +1,14 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import { ModalService } from './modal.service';
 import {Subscription} from "rxjs";
+import { BackdropComponent } from '../backdrop/backdrop.component';
 
 @Component({
-  selector: 'modal',
-  templateUrl: './modal.component.html',
-  styleUrl: './modal.component.css',
+    selector: 'modal',
+    templateUrl: './modal.component.html',
+    styleUrl: './modal.component.css',
+    standalone: true,
+    imports: [BackdropComponent],
 })
 export class ModalComponent implements OnInit, OnDestroy {
   isOpen: boolean;

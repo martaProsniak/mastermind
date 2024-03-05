@@ -3,11 +3,24 @@ import { GameService } from '../game.service';
 import { GameModel, GameStatus } from '../game.model';
 import { ColorModel } from '../color.model';
 import {Subscription} from "rxjs";
+import { HintRowComponent } from '../hint-row/hint-row.component';
+import { EmptyRowComponent } from '../empty-row/empty-row.component';
+import { NgFor } from '@angular/common';
+import { ColorCodeComponent } from '../color-code/color-code.component';
+import { AvailableColorsComponent } from '../available-colors/available-colors.component';
 
 @Component({
-  selector: 'game-board',
-  templateUrl: './board.component.html',
-  styleUrl: './board.component.css',
+    selector: 'game-board',
+    templateUrl: './board.component.html',
+    styleUrl: './board.component.css',
+    standalone: true,
+    imports: [
+        AvailableColorsComponent,
+        ColorCodeComponent,
+        NgFor,
+        EmptyRowComponent,
+        HintRowComponent,
+    ],
 })
 export class BoardComponent implements OnInit, OnDestroy {
   game: GameModel;

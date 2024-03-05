@@ -1,10 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { CodeLength, GameService } from '../game.service';
+import { NgFor } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'game-settings',
-  templateUrl: './settings.component.html',
-  styleUrls: ['./settings.component.css', '../../UI/ui-classes.css'],
+    selector: 'game-settings',
+    templateUrl: './settings.component.html',
+    styleUrls: ['./settings.component.css', '../../UI/ui-classes.css'],
+    standalone: true,
+    imports: [FormsModule, NgFor],
 })
 export class SettingsComponent implements OnInit {
   codeLengthOptions: CodeLength[] = [4, 5];

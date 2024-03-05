@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'rules-instructions',
-  template: `
+    selector: 'rules-instructions',
+    template: `
     <section class="space-y-3">
       <h3 class="text-xl text-green-500">Board</h3>
       <article class="space-y-2">
@@ -21,5 +21,6 @@ import { Component } from '@angular/core';
       </article>
     </section>
   `,
+    standalone: true,
 })
 export class InstructionsComponent {}

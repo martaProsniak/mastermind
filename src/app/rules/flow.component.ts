@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'rules-flow',
-  template: `
+    selector: 'rules-flow',
+    template: `
     <section class="space-y-4">
       <h3 class="text-xl text-green-500">Game flow</h3>
       <article>
@@ -14,5 +14,6 @@ import { Component } from '@angular/core';
       </article>
     </section>
   `,
+    standalone: true,
 })
 export class FlowComponent {}

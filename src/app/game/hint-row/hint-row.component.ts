@@ -3,11 +3,15 @@ import {
   Input,
 } from '@angular/core';
 import { ColorModel } from '../color.model';
+import { ColorDotComponent } from '../color-dot/color-dot.component';
+import { NgFor } from '@angular/common';
 
 @Component({
-  selector: 'hint-row',
-  templateUrl: './hint-row.component.html',
-  styleUrl: './hint-row.component.css',
+    selector: 'hint-row',
+    templateUrl: './hint-row.component.html',
+    styleUrl: './hint-row.component.css',
+    standalone: true,
+    imports: [NgFor, ColorDotComponent],
 })
 export class HintRowComponent {
   @Input() colors: ColorModel[];
