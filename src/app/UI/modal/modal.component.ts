@@ -6,7 +6,6 @@ import { BackdropComponent } from '../backdrop/backdrop.component';
 @Component({
     selector: 'modal',
     templateUrl: './modal.component.html',
-    styleUrl: './modal.component.css',
     standalone: true,
     imports: [BackdropComponent],
 })

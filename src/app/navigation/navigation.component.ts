@@ -8,7 +8,6 @@ import { HeaderComponent } from '../header/header.component';
 @Component({
     selector: 'app-nav',
     templateUrl: './navigation.component.html',
-    styleUrls: ['../UI/ui-classes.css'],
     standalone: true,
     imports: [
         HeaderComponent,

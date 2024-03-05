@@ -6,7 +6,6 @@ import { NgFor } from '@angular/common';
 @Component({
     selector: 'empty-row',
     templateUrl: './empty-row.component.html',
-    styleUrl: './empty-row.component.css',
     standalone: true,
     imports: [NgFor, ColorDotComponent],
 })

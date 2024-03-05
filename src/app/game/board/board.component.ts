@@ -12,7 +12,6 @@ import { AvailableColorsComponent } from '../available-colors/available-colors.c
 @Component({
     selector: 'game-board',
     templateUrl: './board.component.html',
-    styleUrl: './board.component.css',
     standalone: true,
     imports: [
         AvailableColorsComponent,

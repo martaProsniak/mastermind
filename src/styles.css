@@ -22,8 +22,8 @@ body {
     height: 40px;
     border-radius: 50%;
     transform: translate(100%, 25%) scale(1);
-    transition: 'background-color';
-    transition-duration: 300ms;
+    transition: all;
+    transition-duration: 500ms;
   }
 
   .accent-sky::before {

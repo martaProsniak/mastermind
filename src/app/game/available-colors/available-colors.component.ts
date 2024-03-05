@@ -8,7 +8,6 @@ import { NgFor } from '@angular/common';
 @Component({
     selector: 'available-colors',
     templateUrl: './available-colors.component.html',
-    styleUrl: './available-colors.component.css',
     standalone: true,
     imports: [NgFor, ColorDotComponent],
 })

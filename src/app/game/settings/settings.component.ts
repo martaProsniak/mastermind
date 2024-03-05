@@ -6,7 +6,6 @@ import { FormsModule } from '@angular/forms';
 @Component({
     selector: 'game-settings',
     templateUrl: './settings.component.html',
-    styleUrls: ['./settings.component.css', '../../UI/ui-classes.css'],
     standalone: true,
     imports: [FormsModule, NgFor],
 })

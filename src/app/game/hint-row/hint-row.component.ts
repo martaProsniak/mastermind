@@ -9,7 +9,6 @@ import { NgFor } from '@angular/common';
 @Component({
     selector: 'hint-row',
     templateUrl: './hint-row.component.html',
-    styleUrl: './hint-row.component.css',
     standalone: true,
     imports: [NgFor, ColorDotComponent],
 })

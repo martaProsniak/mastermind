@@ -5,7 +5,6 @@ import { NgFor } from '@angular/common';
 @Component({
     selector: 'home-page',
     templateUrl: './home.component.html',
-    styleUrl: '../UI/ui-classes.css',
     standalone: true,
     imports: [
         NgFor,

@@ -10,7 +10,6 @@ import { BoardComponent } from './board/board.component';
 @Component({
     selector: 'game',
     templateUrl: './game.component.html',
-    styleUrl: './game.component.css',
     standalone: true,
     imports: [BoardComponent, ModalComponent],
 })
