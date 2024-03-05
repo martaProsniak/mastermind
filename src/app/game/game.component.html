@@ -6,14 +6,14 @@
  @if(gameStatus === 'success' || gameStatus === 'fail') {
 <modal>
   <div
-    class="h-52 md:h-60 max-w-[480px] min-w-[300px] w-2/3 bg-zinc-800 text-zinc-200 shadow-md border-2 {{gameStatus === 'success' ? 'shadow-pink-500/20' : 'shadow-sky-500/20'}} border-zinc-900 text-center text-pretty absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full">
+    class="h-80 max-w-[480px] min-w-[300px] w-2/3 bg-zinc-800 text-zinc-200 shadow-md border-2 {{gameStatus === 'success' ? 'border-pink-600' : 'border-sky-600'}} text-center text-pretty absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-smd">
     <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10/12">
         @if(gameStatus === 'success') {
         <h4 class="text-xl accent accent-pink accent-top underline underline-offset-8 mb-4 font-normal">Congratulations!</h4>
         <p class="md:text-lg font-light">You've guessed the code in {{turn + 1}} {{turn > 1 ? 'turns' : 'turn'}} </p>
         }
         @if (gameStatus === 'fail'){
-        <h4 class="text-xl accent accent-sky accent-top underline underline-offset-8 mb-4 font-normal">Sorry!</h4>
+        <h4 class="text-xl accent accent-sky accent-top underline underline-offset-8 mb-4 font-normal">Sorry, you've lost!</h4>
         <p class="md:text-lg font-light">You haven't guess the code this time.</p>
         }
     </div>
